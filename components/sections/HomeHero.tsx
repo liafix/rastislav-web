@@ -23,7 +23,7 @@ export function HomeHero() {
     >
       <div className="hero-bg-stack" data-hero-bg aria-hidden="true">
         <Image
-          src="/hero/background-interior.png"
+          src="/hero/background-interior.webp"
           alt=""
           fill
           priority

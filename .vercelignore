@@ -1,0 +1,31 @@
+.git
+.next
+node_modules
+.cursor
+.agents
+.vercel
+
+# Documentation and audit artifacts are not required at runtime.
+docs
+*.docx
+MARTIS_MV_PREMIUM_WEBSITE_PHASE_PLAN.md
+optimalizovany_awwwards_3d_nextjs_prompt.txt
+Untitled-1.jsonc
+
+# Source/demo assets and local render outputs.
+textures
+renders
+tools
+ClassicNightstand_01_4k.glb
+side_table_01_4k.glb
+ducato_optimized.glb
+background picture.png
+marti* mv *.png
+
+# Generated local files.
+tsconfig.tsbuildinfo
+next-dev*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

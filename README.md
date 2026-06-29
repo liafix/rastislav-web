@@ -1,18 +1,16 @@
-# Martis MV Demo Prototype
+# Martis MV Website
 
-Functional frontend prototype for `mv MARTIŠ - Interiérové rekonštrukcie`.
+Production-oriented Next.js website for `Martiš MV` interior reconstruction services.
 
-This demo shows:
+The project includes:
 
-- premium landing page direction,
-- 3D Ducato vehicle scroll story,
-- service detail pages,
-- dummy booking form,
-- contact page with phone and WhatsApp links,
-- mobile sticky contact bar,
-- reduced-motion and mobile 3D fallbacks.
-
-No database, no Stripe, no analytics and no backend are included.
+- premium landing and service pages,
+- local SEO landing pages,
+- booking flow with Stripe Checkout integration,
+- Drizzle database schema and migrations,
+- server-only email notification support,
+- sitemap, robots, metadata, and Open Graph assets,
+- desktop 3D/motion layer with reduced-motion and mobile fallbacks.
 
 ## Requirements
 
@@ -41,3 +39,14 @@ http://localhost:3000
 ```bash
 npm run build
 ```
+
+## Production Asset Notes
+
+Phase 6 removed unused source/demo assets and switched large runtime imagery to optimized WebP files:
+
+- active hero image: `public/hero/background-interior.webp`
+- active WebGL fallback image: `public/images/floating_glass.webp`
+- required runtime model: `public/models/ducato_optimized.glb`
+- stable social image: `public/og/martis-mv-og.jpg`
+
+Do not deploy local ballast such as `.git`, `node_modules`, `.next`, `.cursor`, `.agents`, `docs`, `textures`, `renders`, `tools`, root source images/models, development logs, or `tsconfig.tsbuildinfo`. See `.vercelignore` and `docs/phase6/performance-cleanup.md` for the Phase 6 cleanup record.

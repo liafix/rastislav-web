@@ -473,7 +473,7 @@ select {
 .scene-fallback {
   background-image:
     linear-gradient(120deg, rgba(247, 244, 237, 0.6), rgba(247, 244, 237, 0.95)),
-    url("/images/floating_glass.png");
+    url("/images/floating_glass.webp");
   background-size: cover;
   background-position: center;
 }

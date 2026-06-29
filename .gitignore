@@ -2,12 +2,30 @@
 node_modules
 out
 dist
+.turbo
+.cache
 .env
 .env.local
 .vercel
 .agents
 .cursor
+tsconfig.tsbuildinfo
+next-dev*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Local 3D/source outputs and non-runtime render exports.
+/ClassicNightstand_01_4k.glb
+/side_table_01_4k.glb
+/ducato_optimized.glb
+/background picture.png
+/marti* mv *.png
+/textures/
+/renders/
+
+# Local Blender/tooling noise.
+tools/**/__pycache__/
+tools/**/*.pyc
+tools/**/.DS_Store
