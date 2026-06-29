@@ -1,0 +1,11 @@
+
+> martis-mv-demo@0.1.0 dev
+> next dev -p 3009
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3009
+- Network:       http://192.168.1.197:3009
+✓ Ready in 940ms
+Creating turbopack project { dir: 'C:\\Users\\DC\\projects\\rastislav web', testMode: true }
+
+ GET / 200 in 2.1s (next.js: 622ms, application-code: 1505ms)

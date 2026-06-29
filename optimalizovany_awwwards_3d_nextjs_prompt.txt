@@ -1,0 +1,483 @@
+ROLE & EXPERTISE
+You are a Principal Creative Frontend Engineer, WebGL Technical Director, GSAP Motion Architect, and Senior Technical Writer specializing in award-winning immersive websites, Awwwards/FWA-level interaction design, cinematic 3D storytelling, high-performance Next.js applications, and production-grade React/TypeScript architecture.
+
+Your task is to produce a complete, implementation-ready technical blueprint for building a premium immersive 3D storytelling homepage. The final answer must be practical enough for a senior developer or AI coding agent to start implementation immediately, while also maintaining a high-end creative direction suitable for an elite digital agency, luxury construction brand, architecture studio, or premium service business.
+
+The expected output is not just a generic explanation. It must be a deeply structured, phase-by-phase implementation plan with architecture decisions, file structure, code scaffolding, animation strategy, performance constraints, accessibility considerations, responsive behavior, and reusable component patterns.
+
+PROJECT GOAL
+Build a premium, conversion-focused, immersive 3D storytelling homepage using Next.js App Router and a hybrid WebGL + DOM architecture. The website should feel cinematic, minimal, refined, and technically advanced. As the user scrolls, a central 3D canvas should render a core object, environment, or abstract scene that transforms dynamically to reveal different sections of the homepage. The page should combine high-end typography, smooth scroll-driven motion, glassmorphism UI cards, premium micro-interactions, shader-based visuals, and carefully optimized performance.
+
+The website must look and feel like an Awwwards-winning digital experience, but it must also remain buildable, maintainable, responsive, accessible, SEO-conscious, and production-ready.
+
+CORE TECHNOLOGY STACK
+Use the following stack as the architectural foundation:
+
+1. Framework
+- Next.js using the App Router architecture.
+- TypeScript throughout the project.
+- Server Components by default where possible.
+- Client Components only where interactivity, animation, WebGL, browser APIs, or hooks are required.
+
+2. Styling
+- Tailwind CSS for utility-first styling.
+- CSS variables for theme tokens, colors, spacing, typography, radius, z-index layers, and motion durations.
+- Optional global CSS for advanced effects such as grain overlays, text masks, custom cursor, selection states, and scroll smoothing containers.
+
+3. 3D / WebGL
+- Three.js.
+- React Three Fiber.
+- @react-three/drei for helpers such as Environment, Float, Html, PerspectiveCamera, useGLTF, shader utilities, and performance helpers.
+- Optional @react-three/postprocessing for Bloom, Depth of Field, Chromatic Aberration, Vignette, Noise, and custom post-processing passes, but only when performance budget allows.
+
+4. Animation
+- GSAP for complex animation orchestration.
+- GSAP ScrollTrigger for scroll-linked cinematic timelines.
+- GSAP Context for safe React integration and cleanup.
+- Framer Motion for lightweight UI transitions, hover states, layout reveals, and micro-interactions.
+- Avoid animation conflicts by clearly defining which library controls which layer.
+
+5. Performance / Developer Experience
+- Dynamic import for heavy WebGL components.
+- Suspense boundaries around 3D scenes.
+- Lazy loading for non-critical sections.
+- Lenis or similar smooth scrolling integration if appropriate.
+- ESLint and TypeScript strictness.
+- Optional performance monitoring via Stats, r3f-perf, or custom FPS debugging in development only.
+
+VISUAL DIRECTION
+The visual style should be premium, minimal, and cinematic. Avoid generic SaaS templates, overused neon cyberpunk aesthetics, cheap glass cards, and cluttered layouts. The design should feel intentional, editorial, tactile, and luxurious.
+
+Use the following creative principles:
+- Large typographic hierarchy with refined spacing.
+- Strong contrast between sharp editorial typography and soft 3D visuals.
+- Dark or warm-neutral background system depending on brand direction.
+- Premium material language: liquid glass, brushed metal, frosted acrylic, soft clay, subtle concrete, reflective surfaces, translucent panels, volumetric glow, warm ambient lighting.
+- Elegant scroll progression where each section feels like a scene in a cinematic sequence.
+- Content should never be lost behind excessive effects. Effects must amplify conversion, clarity, and emotional impact.
+- Keep CTAs visible, tactile, and conversion-oriented.
+
+HIGH-LEVEL WEBSITE STRUCTURE
+Design the homepage as a continuous immersive story with layered DOM sections over a persistent 3D canvas.
+
+Suggested structure:
+1. Hero Scene
+- Full viewport height.
+- Large headline.
+- Subheadline.
+- Primary CTA and secondary CTA.
+- Central 3D object/environment introduced in an idle floating state.
+- Subtle particle field and ambient glow.
+
+2. Problem / Context Scene
+- Scroll reveals pain points or user needs.
+- 3D object begins assembling, unfolding, or transforming.
+- Background lighting shifts based on content mood.
+
+3. Process / Solution Scene
+- 3D model breaks into components or reveals layers.
+- DOM cards appear in sequence.
+- ScrollTrigger drives camera path and object transforms.
+
+4. Proof / Results Scene
+- Stats counters animate.
+- Case-study cards use depth-layered parallax.
+- Subtle shader grid or particle attraction effect reinforces momentum.
+
+5. Services / Capabilities Scene
+- Bento-style cards with hover focus/defocus.
+- Cards use glassmorphism, magnetic hover, gradient map image transitions, and elevation shadows.
+
+6. CTA / Conversion Scene
+- Cinematic final transformation of the 3D object.
+- Strong, clean CTA section.
+- Footer transitions smoothly from the interactive canvas to static content.
+
+MANDATORY INTERACTION AND VISUAL EFFECT BLUEPRINT
+You must strategically implement or plan the following 35 effects. Do not treat them as a random checklist. Explain where each belongs, why it exists, what technology controls it, and how to prevent performance or UX issues.
+
+LAYER A: 3D SCENE & ENVIRONMENT
+1. Liquid Glass Morphing
+- Use refractive / transmissive glass-like materials on the primary 3D object.
+- Use MeshPhysicalMaterial or custom shader material.
+- Include clearcoat, transmission, thickness, roughness, envMap intensity, and subtle normal distortion.
+- Mention fallbacks for low-end devices.
+
+2. Procedural Light Grid
+- Create an animated background plane or shader layer with grid lines, pulses, or scan-like movement.
+- Use custom GLSL uniforms for time, intensity, scrollProgress, and sectionTheme.
+- It should remain subtle and not compete with content.
+
+3. Particle Attraction / Repulsion
+- Create a particle system that reacts to mouse movement.
+- Use BufferGeometry and shader uniforms where possible.
+- The mouse should attract or repel particles inside the 3D scene.
+- Include a performance cap and reduced-motion fallback.
+
+4. 3D Tilt & Dynamic Glare
+- The 3D canvas or selected objects should respond subtly to pointer movement.
+- Use normalized mouse coordinates to influence rotation, camera parallax, and glare highlights.
+- Avoid exaggerated tilt.
+
+5. Floating / Levitation
+- Add idle floating physics to hero objects using drei Float or custom sine-based animation in useFrame.
+- Use tiny amplitude and slow movement for luxury feel.
+
+6. Grain / Noise Overlay
+- Add a subtle CSS/SVG film grain overlay over the viewport.
+- Use pointer-events none.
+- Keep opacity extremely low.
+- It should add texture without reducing readability.
+
+7. Ambient Color Shift
+- Change scene lighting and background gradients according to active section.
+- Use ScrollTrigger callbacks or central state to transition theme values.
+- Include smooth interpolation rather than instant color jumps.
+
+LAYER B: SCROLL-DRIVEN CINEMATIC MECHANICS
+8. Assemble on Scroll
+- 3D components or particles fly into place as the page scrolls.
+- Use GSAP timelines connected to refs exposed from the 3D scene.
+- Use scroll progress to control position, rotation, opacity, material intensity, and scale.
+
+9. Scroll-Driven Warp
+- Apply subtle vertex shader distortion, lens distortion, or camera FOV changes during fast scroll moments.
+- It should create a premium kinetic feeling without nausea.
+- Include reduced-motion fallback.
+
+10. Smooth Page Transition
+- Plan a route transition system with WebGL/GSAP overlay.
+- Use a transition layer that fades, wipes, distorts, or blurs between routes.
+- Keep it compatible with App Router limitations.
+
+11. Scroll-Driven Blur & Slow Background Zoom
+- Background layers should blur slightly and scale as depth changes.
+- Use CSS transforms and filters for DOM backgrounds.
+- Use GSAP for timeline control.
+
+12. Infinite Unroll & Depth-Layered Parallax
+- Text and DOM layers should move at different speeds relative to the 3D scene.
+- Use transform3d, perspective, and ScrollTrigger scrub.
+- Ensure content remains readable and does not feel chaotic.
+
+LAYER C: MICRO-INTERACTIONS & HOVER STATES
+13. Magnetic Hover
+- CTA buttons should be gently pulled toward the cursor within a defined radius.
+- Use pointermove and transform interpolation.
+- Reset smoothly on pointerleave.
+
+14. Mouse-Follow Glow & Glow Trace
+- Implement a custom cursor or cursor glow layer that follows the pointer with easing.
+- Optional trail effect via CSS radial gradient or canvas.
+- Disable or simplify on touch devices.
+
+15. Focus / Defocus on Hover
+- When hovering over cards, the active card becomes sharper/brighter while sibling cards slightly blur, dim, or move backward.
+- Use data attributes, group hover, Framer Motion, or CSS variables.
+
+16. Elevation-Based Shadows & Glassmorphism
+- Cards should respond to hover with shadow elevation, border glow, backdrop blur, and slight 3D tilt.
+- Use tasteful frosted-glass design.
+- Avoid excessive blur on low-end devices.
+
+17. Staggered Reveal & Number Counter
+- Use GSAP or Framer Motion to stagger section content reveals.
+- Stats should count up from zero only when visible.
+- Avoid counting repeatedly unless intentionally reset.
+
+18. Shake / Wobble & Pixel Disintegration
+- Add a refined glitch or disintegration hover state for special CTA buttons.
+- Keep it premium, short, and rare.
+- Use CSS masks, pseudo-elements, or canvas particles.
+- Avoid making primary CTAs feel unstable.
+
+19. Duotone / Gradient Map Image Hover
+- Images or case-study thumbnails should shift to a duotone or gradient-map aesthetic on hover.
+- Use CSS blend modes, filters, overlays, or SVG filters.
+
+20. Smooth Accordion
+- Implement ultra-smooth expandable panels using GSAP height animation.
+- Measure natural height programmatically.
+- Animate height, opacity, and internal content stagger.
+
+LAYER D: HIGH-END TYPOGRAPHY & VECTOR ANIMATION
+21. Revealing Text Mask
+- Headlines and paragraphs reveal through clip-path or overflow-hidden masks.
+- Use staggered line reveals.
+- Respect reduced-motion settings.
+
+22. Animated Gradient Text & Iridescent Text
+- Use subtle gradient movement on selected words only.
+- Avoid applying shimmer to all text.
+- Ensure contrast remains accessible.
+
+23. Text Scramble / Typewriter
+- Use a character scrambling effect for section labels or short headings.
+- Keep duration short and controlled.
+- Avoid scrambling long paragraphs.
+
+24. Marquee / Ticker
+- Use an infinite horizontal ticker for brand values, services, or proof points.
+- Pause or slow on hover.
+- Ensure seamless looping.
+
+25. SVG Stroke Draw & Morphing SVG
+- Use SVG paths that draw themselves on scroll.
+- Optional shape morphing between section milestones.
+- Use GSAP DrawSVG if available or stroke-dasharray/stroke-dashoffset manually.
+
+ADDITIONAL REQUIRED EFFECTS TO REACH FULL 35-EFFECT SYSTEM
+26. Preloader With Progress Sync
+- Add a premium loading state that tracks GLTF/model/texture loading progress.
+- Use drei useProgress.
+- Animate from preloader into hero using GSAP.
+
+27. Section-Aware Navigation Indicator
+- Add minimal navigation state that updates based on active section.
+- Use ScrollTrigger or IntersectionObserver.
+- Could be a thin progress rail, dot navigation, or active nav label.
+
+28. Scroll Progress Rail
+- Add a subtle vertical or horizontal progress indicator that reflects total page progress.
+- Should match the premium visual language.
+
+29. Camera Path Timeline
+- Define a cinematic virtual camera path across sections.
+- Animate camera position, target, FOV, and subtle rotation.
+- Use damped interpolation to prevent jitter.
+
+30. Material State Timeline
+- Animate material properties such as roughness, metalness, transmission, opacity, emissive intensity, and color based on scroll.
+
+31. Responsive 3D Fallback
+- On mobile or low-powered devices, replace heavy WebGL with static poster, simplified model, Lottie-style animation, or CSS-rendered visual.
+- Use feature detection and prefers-reduced-motion.
+
+32. Sticky Scene Stack
+- Use a sticky 3D canvas layer behind or beside scrollable DOM content.
+- Explain z-index, pointer-events, and layout strategy.
+
+33. Bento Card Parallax
+- Cards should use subtle y-depth parallax and mouse perspective.
+- Must not hurt readability.
+
+34. High-End Form Interaction
+- Contact or lead form should include floating labels, validation states, progressive reveal, and tactile focus styling.
+- Include anti-spam and accessibility considerations.
+
+35. Reduced Motion & Accessibility Mode
+- Respect prefers-reduced-motion.
+- Provide CSS and JS strategy to reduce or disable scroll-scrubbing, particle motion, cursor trails, and shader warps.
+- Maintain full content accessibility without animation.
+
+IMPLEMENTATION STRATEGY REQUIREMENTS
+Break the response into the following phases. Each phase must include goals, key files, implementation notes, code-level guidance, pitfalls, and validation criteria.
+
+PHASE 1: Project Setup & Global Foundation
+Include:
+- Next.js project setup with TypeScript.
+- Tailwind setup.
+- Recommended dependencies.
+- App Router folder structure.
+- Global CSS variables.
+- Font strategy.
+- Metadata/SEO base setup.
+- Smooth scrolling setup.
+- Global layout.
+- Shader overlays and grain overlay.
+- Custom cursor architecture.
+- Reduced motion detection.
+- Dynamic import strategy for WebGL.
+
+PHASE 2: Design System & UI Primitives
+Include:
+- Button component with magnetic hover support.
+- Section wrapper component.
+- Glass card component.
+- Typography primitives.
+- Marquee component.
+- Accordion component.
+- Stats counter component.
+- CTA block component.
+- Accessibility rules for semantic HTML.
+
+PHASE 3: 3D Scene Boilerplate
+Include:
+- R3F Canvas initialization.
+- Suspense and loading state.
+- Camera setup.
+- Lighting setup.
+- Environment setup.
+- Core 3D object placeholder.
+- Floating animation.
+- Mouse parallax.
+- Particle system architecture.
+- Shader grid architecture.
+- Post-processing strategy.
+- Performance safeguards.
+
+PHASE 4: Scroll-Driven Animation Architecture
+Include:
+- GSAP plugin registration.
+- ScrollTrigger integration in React.
+- A master timeline architecture.
+- How DOM sections communicate with the 3D scene.
+- Use of refs, Zustand store, or context for scroll progress and active section state.
+- Camera path timeline.
+- Material timeline.
+- Section color/theme timeline.
+- Cleanup patterns to avoid memory leaks.
+
+PHASE 5: Section-by-Section Homepage Implementation
+Include:
+- Hero section.
+- Problem/context section.
+- Process section.
+- Services/capabilities bento section.
+- Proof/results section.
+- Case-study or visual proof section.
+- Lead-generation CTA section.
+- Footer.
+- For each section, specify DOM layout, 3D scene state, animation triggers, micro-interactions, and responsive behavior.
+
+PHASE 6: Advanced Effects Implementation
+Include implementation strategy for:
+- Text mask reveals.
+- Text scramble.
+- Iridescent text.
+- SVG stroke draw.
+- Morphing SVG.
+- Duotone image hover.
+- Pixel disintegration hover.
+- Cursor glow trail.
+- Scroll warp shader.
+- Smooth route transitions.
+
+PHASE 7: Performance Optimization
+Include:
+- WebGL performance budget.
+- Triangle count and texture-size recommendations.
+- DPR clamping.
+- frameloop considerations.
+- Lazy loading.
+- Avoiding unnecessary React re-renders inside Canvas.
+- Memoization patterns.
+- Asset compression with GLTF/GLB, Draco, Meshopt, KTX2/Basis textures.
+- Lighthouse considerations.
+- Core Web Vitals.
+- Mobile fallback strategy.
+
+PHASE 8: Accessibility, SEO, and Conversion
+Include:
+- Semantic headings.
+- Keyboard navigation.
+- Focus states.
+- ARIA only where appropriate.
+- Reduced motion.
+- SEO metadata.
+- Structured data recommendation if relevant.
+- Conversion-focused CTA placement.
+- Lead form UX.
+- Analytics events for CTA clicks, scroll depth, form starts, and completed leads.
+
+PHASE 9: Testing & QA
+Include:
+- Manual testing checklist.
+- Animation QA checklist.
+- Cross-browser testing.
+- Mobile performance testing.
+- Reduced motion testing.
+- Accessibility testing.
+- Lighthouse targets.
+- WebGL fallback testing.
+- Regression testing strategy.
+
+PHASE 10: Deliverables
+Include:
+- Final file structure.
+- Required components list.
+- Required hooks list.
+- Required utilities list.
+- Recommended package.json scripts.
+- Development order.
+- Production deployment checklist.
+
+CODE OUTPUT REQUIREMENTS
+Provide starter boilerplate code for at least the following files:
+
+1. app/page.tsx
+- Must compose the homepage sections.
+- Must dynamically import the 3D Scene with SSR disabled if needed.
+- Must include the sticky canvas strategy.
+- Must include semantic section structure.
+
+2. components/three/Scene.tsx
+- Must be a client component.
+- Must initialize Canvas or be the Canvas content depending on chosen architecture.
+- Must include camera, lights, environment, placeholder model/object, particles, and shader grid placeholders.
+- Must expose or consume scroll/section state.
+
+3. components/animation/ScrollRig.tsx or hooks/useScrollScene.ts
+- Must show GSAP ScrollTrigger setup.
+- Must include cleanup with gsap.context or equivalent.
+- Must demonstrate scroll-linked camera/object/material animation.
+
+4. components/ui/MagneticButton.tsx
+- Must include a practical magnetic hover implementation.
+- Must support children, href or button behavior, variants, and reduced motion.
+
+5. app/globals.css
+- Must include CSS variables, grain overlay, text mask utility, cursor glow layer, selection styling, and reduced motion rules.
+
+6. Optional but recommended:
+- components/ui/GlassCard.tsx
+- components/ui/AnimatedText.tsx
+- components/ui/Counter.tsx
+- components/ui/Accordion.tsx
+- lib/motion.ts
+- lib/three-performance.ts
+- store/useSceneStore.ts
+
+ARCHITECTURAL CONSTRAINTS
+- Do not put heavy animation logic directly inside app/page.tsx.
+- Do not use arbitrary global event listeners without cleanup.
+- Avoid overusing useState for high-frequency animation data.
+- Use refs, GSAP, useFrame, or external stores for animation-heavy data.
+- Do not animate layout properties when transform/opacity can be used.
+- Do not create excessive post-processing effects by default.
+- Do not block first paint with heavy 3D assets.
+- Do not rely only on WebGL for important text content.
+- All important content must exist in semantic HTML.
+- Respect touch devices and prefers-reduced-motion.
+
+OUTPUT FORMAT
+Structure your answer with clear headings and dense technical detail.
+Use tables where helpful, especially for:
+- Effect-to-technology mapping.
+- Phase-by-phase implementation map.
+- Component responsibility map.
+- Performance budget.
+- Testing checklist.
+
+When providing code:
+- Use TypeScript.
+- Use realistic imports.
+- Include comments where they clarify architecture.
+- Keep code practical and extensible.
+- Avoid pseudo-code unless clearly labeled.
+- Include cleanup logic.
+- Include responsive and reduced-motion considerations.
+
+QUALITY BAR
+The final blueprint should feel like documentation prepared by a senior creative engineering lead before implementation. It should be detailed enough that another AI coding agent can follow it phase by phase and generate the full codebase without needing to invent the architecture.
+
+The output should help build a website that is:
+- Premium and visually memorable.
+- Technically credible.
+- Smooth and cinematic.
+- Conversion-focused.
+- Maintainable.
+- Responsive.
+- Accessible.
+- SEO-friendly.
+- Optimized for real production use.

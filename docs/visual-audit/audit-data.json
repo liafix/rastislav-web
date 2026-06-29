@@ -1,0 +1,592 @@
+{
+  "screenshots": [
+    "desktop-booking-errors.png"
+  ],
+  "checks": [
+    {
+      "page": "home",
+      "viewport": "desktop",
+      "url": "http://127.0.0.1:3009/",
+      "screenshot": "desktop-home.png",
+      "h1": "REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\nINTERIÉROVÉ REKONŠTRUKCIE\nSlužby\nObhliadka\nKontakt\n0948 443 899\n\nMV MARTIŠ - DUBNICA NAD VÁHOM\n\nREKONŠTRUKCIE INTERIÉRU NA KĽÚČ\n\nmv MARTIŠ - Dubnica nad Váhom. Interiérové rekonštrukcie, obklady, dlažby, sanita, podlahy a sadrokartón s dôrazom na čistý detail.\n\nObjednať obhliadku\n0948 443 899\nWhatsApp\n\nDEMO STORY\n\nVozidlo, obhliadka, materiál, odovzdanie.\n\nScroll animácia ukazuje smer prémiového webu. Na mobile sa nahradí statickým vizuálom.\n\n01 / PRÍCHOD\n\nMajster príde, pozrie priesto",
+      "canvasCount": 1,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 4,
+      "whatsappLinks": 2,
+      "labels": [],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "service-obklady",
+      "viewport": "desktop",
+      "url": "http://127.0.0.1:3009/sluzby/obklady",
+      "screenshot": "desktop-service-obklady.png",
+      "h1": "Obklady - Dubnica nad Váhom a okolie",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\nINTERIÉROVÉ REKONŠTRUKCIE\nSlužby\nObhliadka\nKontakt\n0948 443 899\n\nOBKLADY\n\nObklady - Dubnica nad Váhom a okolie\n\nRealizujeme obklady pre kúpeľne, kuchyne aj technické priestory v Dubnici nad Váhom, Ilave, Trenčíne a okolí. Dôležitá je pre nás presnosť, čisté napojenia a výsledok, ktorý pôsobí poctivo aj po rokoch používania.\n\nDubnica nad Váhom\nIlava\nTrenčín\nokolité obce\nAko pracujeme\n01\nObhliadka\n02\nCenová ponuka\n03\nRealizácia\n04\nOdovzdanie\nČasté otázky\nRobíte službu obklady aj mimo Dub",
+      "canvasCount": 0,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 3,
+      "whatsappLinks": 1,
+      "labels": [],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "booking",
+      "viewport": "desktop",
+      "url": "http://127.0.0.1:3009/booking",
+      "screenshot": "desktop-booking.png",
+      "h1": "Objednať obhliadku priestoru.",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\nINTERIÉROVÉ REKONŠTRUKCIE\nSlužby\nObhliadka\nKontakt\n0948 443 899\n\nOBHLIADKA\n\nObjednať obhliadku priestoru.\n\nVyplňte základné údaje, službu, lokalitu a preferovaný termín. Formulár je v demo režime, preto po odoslaní zobrazí iba potvrdenie bez odoslania na server.\n\nMeno\nTelefón\nEmail\nSlužba\nVyberte službu\nObklady\nDlažby\nOmietky\nPodlahy\nSanita\nDvere, zárubne, kovania\nSadrokartón\nRekonštrukcie interiéru na kľúč\nLokalita\nPreferovaný dátum\nPreferovaný čas\nVyberte čas\nráno\npopoludnie\nSpráva\nS",
+      "canvasCount": 0,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 3,
+      "whatsappLinks": 1,
+      "labels": [
+        "Meno",
+        "Telefón",
+        "Email",
+        "Služba",
+        "Lokalita",
+        "Preferovaný dátum",
+        "Preferovaný čas",
+        "Správa",
+        "Súhlasím so spracovaním údajov pre účel kontaktovania k obhliadke."
+      ],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "contact",
+      "viewport": "desktop",
+      "url": "http://127.0.0.1:3009/kontakt",
+      "screenshot": "desktop-contact.png",
+      "h1": "Ozvite sa k rekonštrukcii interiéru.",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\nINTERIÉROVÉ REKONŠTRUKCIE\nSlužby\nObhliadka\nKontakt\n0948 443 899\n\nKONTAKT\n\nOzvite sa k rekonštrukcii interiéru.\n\nNajrýchlejšie je zavolať alebo poslať správu cez WhatsApp s fotkami priestoru.\n\n0948 443 899\nWhatsApp\n\nTELEFÓN\n\n0948 443 899\n\nADRESA\n\nA. Kmeša 939/28, Dubnica nad Váhom\n\nMAPA\n\nA. Kmeša 939/28\n\nDubnica nad Váhom\n\nmv MARTIŠ\n\nREKONŠTRUKCIE INTERIÉRU NA KĽÚČ\n\nKontakt\n\n0948 443 899\n\nA. Kmeša 939/28, Dubnica nad Váhom\n\nOblasť\n\nDubnica nad Váhom\n\nIlava, Trenčín a okolie\n\n© 2026 mv M",
+      "canvasCount": 0,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 5,
+      "whatsappLinks": 2,
+      "labels": [],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "home",
+      "viewport": "tablet",
+      "url": "http://127.0.0.1:3009/",
+      "screenshot": "tablet-home.png",
+      "h1": "REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\nINTERIÉROVÉ REKONŠTRUKCIE\nSlužby\nObhliadka\nKontakt\n0948 443 899\n\nMV MARTIŠ - DUBNICA NAD VÁHOM\n\nREKONŠTRUKCIE INTERIÉRU NA KĽÚČ\n\nmv MARTIŠ - Dubnica nad Váhom. Interiérové rekonštrukcie, obklady, dlažby, sanita, podlahy a sadrokartón s dôrazom na čistý detail.\n\nObjednať obhliadku\n0948 443 899\nWhatsApp\n\nDEMO STORY\n\nVozidlo, obhliadka, materiál, odovzdanie.\n\nScroll animácia ukazuje smer prémiového webu. Na mobile sa nahradí statickým vizuálom.\n\n01 / PRÍCHOD\n\nMajster príde, pozrie priesto",
+      "canvasCount": 1,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 4,
+      "whatsappLinks": 2,
+      "labels": [],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "service-obklady",
+      "viewport": "tablet",
+      "url": "http://127.0.0.1:3009/sluzby/obklady",
+      "screenshot": "tablet-service-obklady.png",
+      "h1": "Obklady - Dubnica nad Váhom a okolie",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\nINTERIÉROVÉ REKONŠTRUKCIE\nSlužby\nObhliadka\nKontakt\n0948 443 899\n\nOBKLADY\n\nObklady - Dubnica nad Váhom a okolie\n\nRealizujeme obklady pre kúpeľne, kuchyne aj technické priestory v Dubnici nad Váhom, Ilave, Trenčíne a okolí. Dôležitá je pre nás presnosť, čisté napojenia a výsledok, ktorý pôsobí poctivo aj po rokoch používania.\n\nDubnica nad Váhom\nIlava\nTrenčín\nokolité obce\nAko pracujeme\n01\nObhliadka\n02\nCenová ponuka\n03\nRealizácia\n04\nOdovzdanie\nČasté otázky\nRobíte službu obklady aj mimo Dub",
+      "canvasCount": 0,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "stickyMobile": true,
+      "ctaAboveFold": false,
+      "telLinks": 3,
+      "whatsappLinks": 1,
+      "labels": [],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "booking",
+      "viewport": "tablet",
+      "url": "http://127.0.0.1:3009/booking",
+      "screenshot": "tablet-booking.png",
+      "h1": "Objednať obhliadku priestoru.",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\nINTERIÉROVÉ REKONŠTRUKCIE\nSlužby\nObhliadka\nKontakt\n0948 443 899\n\nOBHLIADKA\n\nObjednať obhliadku priestoru.\n\nVyplňte základné údaje, službu, lokalitu a preferovaný termín. Formulár je v demo režime, preto po odoslaní zobrazí iba potvrdenie bez odoslania na server.\n\nMeno\nTelefón\nEmail\nSlužba\nVyberte službu\nObklady\nDlažby\nOmietky\nPodlahy\nSanita\nDvere, zárubne, kovania\nSadrokartón\nRekonštrukcie interiéru na kľúč\nLokalita\nPreferovaný dátum\nPreferovaný čas\nVyberte čas\nráno\npopoludnie\nSpráva\nS",
+      "canvasCount": 0,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 3,
+      "whatsappLinks": 1,
+      "labels": [
+        "Meno",
+        "Telefón",
+        "Email",
+        "Služba",
+        "Lokalita",
+        "Preferovaný dátum",
+        "Preferovaný čas",
+        "Správa",
+        "Súhlasím so spracovaním údajov pre účel kontaktovania k obhliadke."
+      ],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "contact",
+      "viewport": "tablet",
+      "url": "http://127.0.0.1:3009/kontakt",
+      "screenshot": "tablet-contact.png",
+      "h1": "Ozvite sa k rekonštrukcii interiéru.",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\nINTERIÉROVÉ REKONŠTRUKCIE\nSlužby\nObhliadka\nKontakt\n0948 443 899\n\nKONTAKT\n\nOzvite sa k rekonštrukcii interiéru.\n\nNajrýchlejšie je zavolať alebo poslať správu cez WhatsApp s fotkami priestoru.\n\n0948 443 899\nWhatsApp\n\nTELEFÓN\n\n0948 443 899\n\nADRESA\n\nA. Kmeša 939/28, Dubnica nad Váhom\n\nMAPA\n\nA. Kmeša 939/28\n\nDubnica nad Váhom\n\nmv MARTIŠ\n\nREKONŠTRUKCIE INTERIÉRU NA KĽÚČ\n\nKontakt\n\n0948 443 899\n\nA. Kmeša 939/28, Dubnica nad Váhom\n\nOblasť\n\nDubnica nad Váhom\n\nIlava, Trenčín a okolie\n\n© 2026 mv M",
+      "canvasCount": 0,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 768,
+      "clientWidth": 768,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 5,
+      "whatsappLinks": 2,
+      "labels": [],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "home",
+      "viewport": "mobile",
+      "url": "http://127.0.0.1:3009/",
+      "screenshot": "mobile-home.png",
+      "h1": "REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\n0948 443 899\n\nMV MARTIŠ - DUBNICA NAD VÁHOM\n\nREKONŠTRUKCIE INTERIÉRU NA KĽÚČ\n\nmv MARTIŠ - Dubnica nad Váhom. Interiérové rekonštrukcie, obklady, dlažby, sanita, podlahy a sadrokartón s dôrazom na čistý detail.\n\nObjednať obhliadku\n0948 443 899\nWhatsApp\n\nDEMO STORY\n\nVozidlo, obhliadka, materiál, odovzdanie.\n\nScroll animácia ukazuje smer prémiového webu. Na mobile sa nahradí statickým vizuálom.\n\n01 / PRÍCHOD\n\nMajster príde, pozrie priestor a navrhne jasný postup.\n\nPrvý krok je obhliadka. ",
+      "canvasCount": 0,
+      "fallbackVisible": true,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 4,
+      "whatsappLinks": 2,
+      "labels": [],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "service-obklady",
+      "viewport": "mobile",
+      "url": "http://127.0.0.1:3009/sluzby/obklady",
+      "screenshot": "mobile-service-obklady.png",
+      "h1": "Obklady - Dubnica nad Váhom a okolie",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\n0948 443 899\n\nOBKLADY\n\nObklady - Dubnica nad Váhom a okolie\n\nRealizujeme obklady pre kúpeľne, kuchyne aj technické priestory v Dubnici nad Váhom, Ilave, Trenčíne a okolí. Dôležitá je pre nás presnosť, čisté napojenia a výsledok, ktorý pôsobí poctivo aj po rokoch používania.\n\nDubnica nad Váhom\nIlava\nTrenčín\nokolité obce\nAko pracujeme\n01\nObhliadka\n02\nCenová ponuka\n03\nRealizácia\n04\nOdovzdanie\nČasté otázky\nRobíte službu obklady aj mimo Dubnice nad Váhom?\n\nÁno. Pracujeme v Dubnici nad Váhom",
+      "canvasCount": 0,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "stickyMobile": true,
+      "ctaAboveFold": false,
+      "telLinks": 3,
+      "whatsappLinks": 1,
+      "labels": [],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "booking",
+      "viewport": "mobile",
+      "url": "http://127.0.0.1:3009/booking",
+      "screenshot": "mobile-booking.png",
+      "h1": "Objednať obhliadku priestoru.",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\n0948 443 899\n\nOBHLIADKA\n\nObjednať obhliadku priestoru.\n\nVyplňte základné údaje, službu, lokalitu a preferovaný termín. Formulár je v demo režime, preto po odoslaní zobrazí iba potvrdenie bez odoslania na server.\n\nMeno\nTelefón\nEmail\nSlužba\nVyberte službu\nObklady\nDlažby\nOmietky\nPodlahy\nSanita\nDvere, zárubne, kovania\nSadrokartón\nRekonštrukcie interiéru na kľúč\nLokalita\nPreferovaný dátum\nPreferovaný čas\nVyberte čas\nráno\npopoludnie\nSpráva\nSúhlasím so spracovaním údajov pre účel kontaktovani",
+      "canvasCount": 0,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 3,
+      "whatsappLinks": 1,
+      "labels": [
+        "Meno",
+        "Telefón",
+        "Email",
+        "Služba",
+        "Lokalita",
+        "Preferovaný dátum",
+        "Preferovaný čas",
+        "Správa",
+        "Súhlasím so spracovaním údajov pre účel kontaktovania k obhliadke."
+      ],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "contact",
+      "viewport": "mobile",
+      "url": "http://127.0.0.1:3009/kontakt",
+      "screenshot": "mobile-contact.png",
+      "h1": "Ozvite sa k rekonštrukcii interiéru.",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\n0948 443 899\n\nKONTAKT\n\nOzvite sa k rekonštrukcii interiéru.\n\nNajrýchlejšie je zavolať alebo poslať správu cez WhatsApp s fotkami priestoru.\n\n0948 443 899\nWhatsApp\n\nTELEFÓN\n\n0948 443 899\n\nADRESA\n\nA. Kmeša 939/28, Dubnica nad Váhom\n\nMAPA\n\nA. Kmeša 939/28\n\nDubnica nad Váhom\n\nmv MARTIŠ\n\nREKONŠTRUKCIE INTERIÉRU NA KĽÚČ\n\nKontakt\n\n0948 443 899\n\nA. Kmeša 939/28, Dubnica nad Váhom\n\nOblasť\n\nDubnica nad Váhom\n\nIlava, Trenčín a okolie\n\n© 2026 mv MARTIŠ\n\nVolať\nWhatsApp",
+      "canvasCount": 0,
+      "fallbackVisible": false,
+      "horizontalOverflow": false,
+      "scrollWidth": 375,
+      "clientWidth": 375,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 5,
+      "whatsappLinks": 2,
+      "labels": [],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "booking",
+      "viewport": "desktop",
+      "state": "errors-success",
+      "validationVisible": true,
+      "successVisible": true,
+      "screenshots": [
+        "desktop-booking-errors.png",
+        "desktop-booking-success.png"
+      ]
+    },
+    {
+      "page": "home-reduced-motion",
+      "viewport": "desktop",
+      "url": "http://127.0.0.1:3009/",
+      "screenshot": "desktop-home-reduced-motion.png",
+      "h1": "REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\nINTERIÉROVÉ REKONŠTRUKCIE\nSlužby\nObhliadka\nKontakt\n0948 443 899\n\nMV MARTIŠ - DUBNICA NAD VÁHOM\n\nREKONŠTRUKCIE INTERIÉRU NA KĽÚČ\n\nmv MARTIŠ - Dubnica nad Váhom. Interiérové rekonštrukcie, obklady, dlažby, sanita, podlahy a sadrokartón s dôrazom na čistý detail.\n\nObjednať obhliadku\n0948 443 899\nWhatsApp\n\nDEMO STORY\n\nVozidlo, obhliadka, materiál, odovzdanie.\n\nScroll animácia ukazuje smer prémiového webu. Na mobile sa nahradí statickým vizuálom.\n\n01 / PRÍCHOD\n\nMajster príde, pozrie priesto",
+      "canvasCount": 0,
+      "fallbackVisible": true,
+      "horizontalOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 4,
+      "whatsappLinks": 2,
+      "labels": [],
+      "imageMissingAltCount": 0
+    },
+    {
+      "page": "home-webgl-disabled",
+      "viewport": "desktop",
+      "url": "http://127.0.0.1:3009/",
+      "screenshot": "desktop-home-webgl-disabled.png",
+      "h1": "REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "title": "mv MARTIŠ - REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+      "bodyTextSample": "mv MARTIŠ\nINTERIÉROVÉ REKONŠTRUKCIE\nSlužby\nObhliadka\nKontakt\n0948 443 899\n\nMV MARTIŠ - DUBNICA NAD VÁHOM\n\nREKONŠTRUKCIE INTERIÉRU NA KĽÚČ\n\nmv MARTIŠ - Dubnica nad Váhom. Interiérové rekonštrukcie, obklady, dlažby, sanita, podlahy a sadrokartón s dôrazom na čistý detail.\n\nObjednať obhliadku\n0948 443 899\nWhatsApp\n\nDEMO STORY\n\nVozidlo, obhliadka, materiál, odovzdanie.\n\nScroll animácia ukazuje smer prémiového webu. Na mobile sa nahradí statickým vizuálom.\n\n01 / PRÍCHOD\n\nMajster príde, pozrie priesto",
+      "canvasCount": 0,
+      "fallbackVisible": true,
+      "horizontalOverflow": false,
+      "scrollWidth": 1440,
+      "clientWidth": 1440,
+      "stickyMobile": true,
+      "ctaAboveFold": true,
+      "telLinks": 4,
+      "whatsappLinks": 2,
+      "labels": [],
+      "imageMissingAltCount": 0
+    }
+  ],
+  "console": [
+    {
+      "viewport": "desktop",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "desktop",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "desktop",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+    },
+    {
+      "viewport": "desktop",
+      "type": "warning",
+      "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+    },
+    {
+      "viewport": "desktop",
+      "type": "log",
+      "text": "[Fast Refresh] rebuilding"
+    },
+    {
+      "viewport": "desktop",
+      "type": "log",
+      "text": "[Fast Refresh] done in 688ms"
+    },
+    {
+      "viewport": "desktop",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "desktop",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "desktop",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "desktop",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "desktop",
+      "type": "log",
+      "text": "[Fast Refresh] rebuilding"
+    },
+    {
+      "viewport": "desktop",
+      "type": "log",
+      "text": "[Fast Refresh] done in 3095ms"
+    },
+    {
+      "viewport": "desktop",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "desktop",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "desktop",
+      "type": "log",
+      "text": "[Fast Refresh] rebuilding"
+    },
+    {
+      "viewport": "desktop",
+      "type": "log",
+      "text": "[Fast Refresh] done in 113ms"
+    },
+    {
+      "viewport": "tablet",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "tablet",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "tablet",
+      "type": "warning",
+      "text": "THREE.Clock: This module has been deprecated. Please use THREE.Timer instead."
+    },
+    {
+      "viewport": "tablet",
+      "type": "debug",
+      "text": "unsupported GPOS table LookupType 8 format 2"
+    },
+    {
+      "viewport": "tablet",
+      "type": "debug",
+      "text": "unsupported GPOS table LookupType 5 format 1"
+    },
+    {
+      "viewport": "tablet",
+      "type": "debug",
+      "text": "unsupported GSUB table LookupType 6 format 2"
+    },
+    {
+      "viewport": "tablet",
+      "type": "debug",
+      "text": "unsupported GSUB table LookupType 6 format 1"
+    },
+    {
+      "viewport": "tablet",
+      "type": "debug",
+      "text": "unsupported GPOS table LookupType 8 format 2"
+    },
+    {
+      "viewport": "tablet",
+      "type": "debug",
+      "text": "unsupported GPOS table LookupType 5 format 1"
+    },
+    {
+      "viewport": "tablet",
+      "type": "debug",
+      "text": "unsupported GSUB table LookupType 6 format 2"
+    },
+    {
+      "viewport": "tablet",
+      "type": "debug",
+      "text": "unsupported GSUB table LookupType 6 format 1"
+    },
+    {
+      "viewport": "tablet",
+      "type": "warning",
+      "text": "THREE.WebGLProgram: Program Info Log: (210,81-129): warning X4122: sum of 0.996094 and -2.98545e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.49272e-017 cannot be represented accurately in double precision\n(209,37-61): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n(210,82-106): warning X4122: sum of 1 and -1.66644e-018 cannot be represented accurately in double precision\n\n\n\u0000"
+    },
+    {
+      "viewport": "tablet",
+      "type": "log",
+      "text": "[Fast Refresh] rebuilding"
+    },
+    {
+      "viewport": "tablet",
+      "type": "log",
+      "text": "[Fast Refresh] done in 1156ms"
+    },
+    {
+      "viewport": "tablet",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "tablet",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "tablet",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "tablet",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "tablet",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "tablet",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "mobile",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "mobile",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "mobile",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "mobile",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "mobile",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "mobile",
+      "type": "log",
+      "text": "[HMR] connected"
+    },
+    {
+      "viewport": "mobile",
+      "type": "info",
+      "text": "%cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold"
+    },
+    {
+      "viewport": "mobile",
+      "type": "log",
+      "text": "[HMR] connected"
+    }
+  ],
+  "serviceRoutes": [
+    {
+      "slug": "obklady",
+      "status": "Obklady - Dubnica nad Váhom a okolie",
+      "mentionsDubnica": true
+    },
+    {
+      "slug": "dlazby",
+      "status": "Dlažby - Dubnica nad Váhom a okolie",
+      "mentionsDubnica": true
+    },
+    {
+      "slug": "omietky",
+      "status": "Omietky - Dubnica nad Váhom a okolie",
+      "mentionsDubnica": true
+    },
+    {
+      "slug": "podlahy",
+      "status": "Podlahy - Dubnica nad Váhom a okolie",
+      "mentionsDubnica": true
+    },
+    {
+      "slug": "sanita",
+      "status": "Sanita - Dubnica nad Váhom a okolie",
+      "mentionsDubnica": true
+    },
+    {
+      "slug": "dvere-zarubne-kovania",
+      "status": "Dvere, zárubne, kovania - Dubnica nad Váhom a okolie",
+      "mentionsDubnica": true
+    },
+    {
+      "slug": "sadrokarton",
+      "status": "Sadrokartón - Dubnica nad Váhom a okolie",
+      "mentionsDubnica": true
+    },
+    {
+      "slug": "rekonstrukcie-interieru",
+      "status": "Rekonštrukcie interiéru na kľúč - Dubnica nad Váhom a okolie",
+      "mentionsDubnica": true
+    }
+  ]
+}
