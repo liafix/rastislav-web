@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { localPages } from "@/lib/content/local-pages";
 import { company } from "@/lib/content/services";
 
 export function Footer() {
@@ -8,7 +10,7 @@ export function Footer() {
       data-scene-intensity="rest"
       className="border-t border-black/10 bg-[#141414] pb-24 pt-12 text-[#fffaf0] md:pb-12"
     >
-      <div className="container grid gap-8 md:grid-cols-[1.2fr_1fr_1fr]">
+      <div className="container grid gap-8 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
         <div>
           <p className="text-2xl font-black">{company.name}</p>
           <p className="mt-2 max-w-sm text-sm leading-6 text-white/62">{company.slogan}</p>
@@ -24,6 +26,14 @@ export function Footer() {
           <p>Ilava, Trenčín a okolie</p>
           <p className="mt-4 text-white/42">© 2026 {company.name}</p>
         </div>
+        <nav aria-label="Lokálne stránky" className="text-sm leading-7 text-white/72">
+          <p className="font-bold text-white">Lokality</p>
+          {localPages.map((page) => (
+            <Link key={page.path} href={page.path} className="block transition hover:text-white">
+              {page.location}
+            </Link>
+          ))}
+        </nav>
       </div>
     </footer>
   );
