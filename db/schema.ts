@@ -22,6 +22,7 @@ export const paymentTypeEnum = mysqlEnum("payment_type", ["reservation_fee", "co
 export const paymentStatusEnum = mysqlEnum("payment_status", [
   "created",
   "pending",
+  "checkout_failed",
   "paid",
   "failed",
   "refunded",
@@ -76,6 +77,16 @@ export const payments = mysqlTable("payments", {
   paidAt: timestamp("paid_at"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull()
+});
+
+export const stripeWebhookEvents = mysqlTable("stripe_webhook_events", {
+  id: serial("id").primaryKey(),
+  stripeEventId: varchar("stripe_event_id", { length: 255 }).notNull().unique(),
+  eventType: varchar("event_type", { length: 128 }).notNull(),
+  resourceId: varchar("resource_id", { length: 255 }),
+  processedAt: timestamp("processed_at"),
+  errorMessage: text("error_message"),
+  createdAt: timestamp("created_at").defaultNow().notNull()
 });
 
 export const projects = mysqlTable("projects", {

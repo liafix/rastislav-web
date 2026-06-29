@@ -70,10 +70,22 @@ export async function POST(request: NextRequest) {
       paymentType: input.paymentType,
       amountCents,
       currency: DEFAULT_CURRENCY,
-      paymentStatus: "pending",
+      paymentStatus: "created",
       updatedAt: now
     });
     const paymentId = getInsertId(paymentResult);
+    const stripeMetadata = {
+      leadId: String(leadId),
+      bookingId: String(bookingId),
+      paymentId: String(paymentId),
+      paymentType: input.paymentType,
+      service: input.service,
+      source: "website",
+      landingPage: input.landing_page ?? "",
+      utmSource: input.utm_source ?? "",
+      utmMedium: input.utm_medium ?? "",
+      utmCampaign: input.utm_campaign ?? ""
+    };
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -96,17 +108,9 @@ export async function POST(request: NextRequest) {
           }
         }
       ],
-      metadata: {
-        leadId: String(leadId),
-        bookingId: String(bookingId),
-        paymentId: String(paymentId),
-        paymentType: input.paymentType,
-        service: input.service,
-        source: "website",
-        landingPage: input.landing_page ?? "",
-        utmSource: input.utm_source ?? "",
-        utmMedium: input.utm_medium ?? "",
-        utmCampaign: input.utm_campaign ?? ""
+      metadata: stripeMetadata,
+      payment_intent_data: {
+        metadata: stripeMetadata
       }
     });
 
@@ -114,6 +118,7 @@ export async function POST(request: NextRequest) {
       .update(payments)
       .set({
         stripeSessionId: session.id,
+        paymentStatus: "pending",
         updatedAt: new Date()
       })
       .where(eq(payments.id, paymentId));
