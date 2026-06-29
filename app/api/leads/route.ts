@@ -3,6 +3,7 @@ import type { NextRequest } from "next/server";
 import { getDb } from "@/db";
 import { bookings, leads } from "@/db/schema";
 import { parseLeadInput } from "@/lib/commerce/requests";
+import { sendOwnerLeadNotification } from "@/lib/email/server";
 
 export const runtime = "nodejs";
 
@@ -57,6 +58,17 @@ export async function POST(request: NextRequest) {
       });
       bookingId = getInsertId(bookingResult);
     }
+
+    await sendOwnerLeadNotification({
+      customerName: input.name,
+      customerPhone: input.phone,
+      customerEmail: input.email,
+      service: input.service,
+      location: input.location,
+      preferredDate: input.preferredDate,
+      preferredTime: input.preferredTime,
+      message: input.message
+    });
 
     return NextResponse.json({ ok: true, leadId, bookingId });
   } catch (error) {
