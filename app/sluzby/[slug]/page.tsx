@@ -107,9 +107,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="glass-surface rounded-md p-5">
             <CheckCircle2 className="text-[#257a57]" size={28} aria-hidden="true" />
-            <p className="mt-5 text-2xl font-black">Začnite obhliadkou.</p>
+            <p className="mt-5 text-2xl font-black">Začnite jasným ďalším krokom.</p>
             <p className="mt-3 text-sm leading-6 text-black/62">
-              Krátky formulár, výber služby a preferovaný termín. Potom sa ozveme späť.
+              Vyplníte krátky formulár, vyberiete službu a pokračujete na bezpečnú platbu za obhliadku alebo konzultáciu.
+              Po prijatí požiadavky sa ozveme k praktickému potvrdeniu detailov.
             </p>
             <Link href={`/booking?service=${service.slug}`} className="btn-primary mt-6 w-full">
               {service.primaryCta}

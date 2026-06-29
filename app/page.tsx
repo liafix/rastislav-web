@@ -13,7 +13,7 @@ import { processSteps, services } from "@/lib/content/services";
 import { buildPageMetadata, localBusinessJsonLd } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Rekonštrukcie interiéru Dubnica nad Váhom | mv MARTIŠ",
+  title: "Rekonštrukcie interiéru Dubnica nad Váhom | Martiš MV",
   description:
     "Prémiové interiérové rekonštrukcie, obklady, dlažby, podlahy, sanita, dvere a sadrokartón pre Dubnicu nad Váhom, Ilavu, Trenčín a okolie.",
   path: "/"
@@ -96,11 +96,11 @@ export default function Home() {
           <div data-motion="reveal" className="max-w-xl rounded-md border border-black/10 bg-[#f7f4ed]/78 p-6 backdrop-blur-xl" data-parallax="14">
             <p className="text-sm font-black uppercase text-[#e44f22]">Detail rozhoduje</p>
             <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
-              Rekonštrukcia pôsobí luxusne vtedy, keď nič nevyrušuje.
+              Kvalitný výsledok cítiť najmä v detailoch, ktoré nerušia.
             </h2>
             <p className="mt-5 text-base leading-8 text-black/66">
-              Hrany, napojenia, škáry, podklad a poradie prác vytvárajú pocit kvality. Táto časť stránky je pomalšia,
-              technická a presná, aby vizuál podporil remeslo.
+              Hrany, napojenia, škáry, podklad a poradie prác rozhodujú o tom, či bude interiér pôsobiť pokojne a čisto.
+              Preto riešime prípravu aj dokončenie tak, aby výsledok fungoval technicky aj pri každodennom používaní.
             </p>
           </div>
 
@@ -128,14 +128,15 @@ export default function Home() {
         <div className="container">
           <div data-motion="reveal" className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div className="max-w-3xl">
-              <p className="text-sm font-black uppercase text-[#e44f22]">Služby ako showroom</p>
+              <p className="text-sm font-black uppercase text-[#e44f22]">Služby v jednom postupe</p>
               <h2 className="mt-3 text-4xl font-black leading-tight sm:text-6xl">Kompletná práca v interiéri.</h2>
               <p className="mt-5 max-w-2xl text-base leading-8 text-black/64">
-                Vysoký vizuálny moment patrí sem: služby sa ukážu ako jeden systém, nie ako náhodný zoznam prác.
+                Obklady, dlažby, podlahy, sanita, dvere aj sadrokartón na seba musia nadväzovať. Preto riešime rozsah,
+                poradie prác a detail ako jeden zrozumiteľný celok.
               </p>
             </div>
             <Link href="/sluzby" className="btn-secondary w-fit">
-              Všetky služby
+              Pozrieť služby
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
           </div>
@@ -158,8 +159,8 @@ export default function Home() {
       >
         <div className="container grid gap-10 lg:grid-cols-[0.7fr_1fr] lg:items-start">
           <div data-motion="reveal">
-            <p className="text-sm font-black uppercase text-[#e44f22]">Tichý index služieb</p>
-            <h2 className="mt-4 text-3xl font-black leading-tight sm:text-5xl">Tu sa má dať čítať bez efektov.</h2>
+            <p className="text-sm font-black uppercase text-[#e44f22]">Prehľad prác</p>
+            <h2 className="mt-4 text-3xl font-black leading-tight sm:text-5xl">Vyberte službu a pozrite si ďalší krok.</h2>
           </div>
           <nav data-motion="stagger" aria-label="Prehľad služieb" className="grid gap-2 sm:grid-cols-2">
             {services.map((service) => (
@@ -187,7 +188,7 @@ export default function Home() {
           <div data-motion="reveal" className="max-w-3xl">
             <p className="text-sm font-black uppercase text-[#e44f22]">Dôkaz pred kontaktom</p>
             <h2 className="mt-4 text-4xl font-black leading-tight sm:text-6xl">
-              Stránka má pôsobiť draho, ale zákazník musí cítiť istotu.
+              Dobrý výsledok začína jasnou dohodou pred prvým zásahom do priestoru.
             </h2>
           </div>
 
@@ -224,7 +225,7 @@ export default function Home() {
             <p className="text-sm font-black uppercase text-white/48">Ďalší krok</p>
             <h2 className="mt-3 text-4xl font-black leading-tight sm:text-6xl">Dohodnime si obhliadku priestoru.</h2>
             <p className="mt-5 max-w-2xl text-base leading-8 text-white/62">
-              Najrýchlejšia cesta je zavolať, poslať fotky cez WhatsApp alebo vyplniť krátky formulár.
+              Najrýchlejšia cesta je zavolať, poslať fotky cez WhatsApp alebo rezervovať platený termín cez formulár.
             </p>
           </div>
 

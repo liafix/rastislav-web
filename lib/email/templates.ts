@@ -115,7 +115,7 @@ export function ownerPaidBookingTemplate(details: BookingEmailDetails): EmailCon
   const nextAction = "Ďalší krok: kontaktujte zákazníka a potvrďte detaily termínu.";
 
   return {
-    subject: "Nová zaplatená rezervácia - mv MARTIŠ",
+    subject: "Nová zaplatená rezervácia - Martiš MV",
     text: `${intro}\n\n${operationalRows(details)}\n\n${nextAction}`,
     html: htmlShell("Nová zaplatená rezervácia", intro, operationalHtmlRows(details), nextAction)
   };
@@ -124,7 +124,7 @@ export function ownerPaidBookingTemplate(details: BookingEmailDetails): EmailCon
 export function customerPaidBookingTemplate(details: BookingEmailDetails): EmailContent {
   const amount = formatAmount(details.amountCents, details.currency);
   const intro = "Ďakujeme, prijali sme vašu platbu a požiadavku.";
-  const footer = "Tím mv MARTIŠ vás bude kontaktovať a potvrdí detaily, ak bude potrebné niečo doplniť.";
+  const footer = "Tím Martiš MV vás bude kontaktovať a potvrdí detaily, ak bude potrebné niečo doplniť.";
 
   const rows = [
     field("Služba", serviceLabel(details.service)),
@@ -145,7 +145,7 @@ export function customerPaidBookingTemplate(details: BookingEmailDetails): Email
   ].join("");
 
   return {
-    subject: "Potvrdenie platby a požiadavky - mv MARTIŠ",
+    subject: "Potvrdenie platby a požiadavky - Martiš MV",
     text: `${intro}\n\n${rows}\n\n${footer}`,
     html: htmlShell("Potvrdenie platby a požiadavky", intro, htmlRows, footer)
   };
@@ -156,7 +156,7 @@ export function ownerLeadTemplate(details: BookingEmailDetails): EmailContent {
   const nextAction = "Ďalší krok: overte požiadavku a kontaktujte zákazníka.";
 
   return {
-    subject: "Nový lead z webu - mv MARTIŠ",
+    subject: "Nový lead z webu - Martiš MV",
     text: `${intro}\n\n${operationalRows(details)}\n\n${nextAction}`,
     html: htmlShell("Nový lead z webu", intro, operationalHtmlRows(details), nextAction)
   };
@@ -167,7 +167,7 @@ export function ownerExpiredCheckoutTemplate(details: BookingEmailDetails): Emai
   const nextAction = "Ďalší krok: ak lead vyzerá hodnotne, kontaktujte zákazníka a ponúknite pomoc s dokončením.";
 
   return {
-    subject: "Nedokončená platba - mv MARTIŠ",
+    subject: "Nedokončená platba - Martiš MV",
     text: `${intro}\n\n${operationalRows(details)}\n\n${nextAction}`,
     html: htmlShell("Nedokončená platba", intro, operationalHtmlRows(details), nextAction)
   };

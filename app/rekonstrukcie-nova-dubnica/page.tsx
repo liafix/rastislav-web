@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 const page = getLocalPage("rekonstrukcie-nova-dubnica");
 
 export const metadata: Metadata = buildPageMetadata({
-  title: page?.title ?? "Rekonštrukcie interiéru Nová Dubnica | mv MARTIŠ",
+  title: page?.title ?? "Rekonštrukcie interiéru Nová Dubnica | Martiš MV",
   description:
     page?.description ??
     "Rekonštrukcie interiérov pre Novú Dubnicu: lokálny kontakt, obhliadka, kúpeľne, podlahy, obklady, sanita a sadrokartón.",

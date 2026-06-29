@@ -6,7 +6,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 const page = getLocalPage("rekonstrukcie-ilava");
 
 export const metadata: Metadata = buildPageMetadata({
-  title: page?.title ?? "Rekonštrukcie interiéru Ilava | mv MARTIŠ",
+  title: page?.title ?? "Rekonštrukcie interiéru Ilava | Martiš MV",
   description:
     page?.description ??
     "Rekonštrukcie interiérov v Ilave: obhliadka, kúpeľne, obklady, dlažby, podlahy, sadrokartón a čisté dokončenie detailov.",

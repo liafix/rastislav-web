@@ -14,7 +14,7 @@ export function BookingActions() {
           href="/booking"
           className="btn-primary w-full border-white/20 bg-[#e44f22] text-white hover:bg-[#c83f18]"
         >
-          Objednať obhliadku
+          Rezervovať obhliadku
           <Clock3 size={18} aria-hidden="true" />
         </Link>
       </MagneticButton>

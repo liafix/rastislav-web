@@ -76,7 +76,7 @@ export function LocalLandingPage({ page }: LocalLandingPageProps) {
               <ArrowUpRight size={18} aria-hidden="true" />
             </Link>
             <Link href="/kontakt" className="btn-secondary">
-              Kontakt
+              Kontaktovať
             </Link>
           </div>
 
@@ -128,10 +128,10 @@ export function LocalLandingPage({ page }: LocalLandingPageProps) {
             <MapPin className="text-[#e44f22]" size={28} aria-hidden="true" />
             <p className="mt-5 text-2xl font-black">{page.location}</p>
             <p className="mt-3 text-sm leading-6 text-black/62">
-              Lokálna stránka pre rekonštrukcie interiéru a nadväzujúce práce v tejto časti obsluhovanej oblasti.
+              V tejto lokalite vieme podľa rozsahu riešiť obhliadku, konzultáciu alebo konkrétne interiérové práce.
             </p>
             <Link href={`/booking?location=${encodeURIComponent(page.location)}`} className="btn-primary mt-6 w-full">
-              Objednať obhliadku
+              Rezervovať obhliadku
             </Link>
             <Link href="/kontakt" className="btn-secondary mt-3 w-full">
               Kontaktovať

@@ -1,10 +1,10 @@
 import type { PaymentType, ServiceSlug } from "@/lib/contracts";
 
 export const company = {
-  name: "mv MARTIŠ",
+  name: "Martiš MV",
   legalName: "Martiš MV",
   descriptor: "Interiérové rekonštrukcie",
-  slogan: "REKONŠTRUKCIE INTERIÉRU NA KĽÚČ",
+  slogan: "Rekonštrukcie interiéru na kľúč",
   phoneDisplay: "0948 443 899",
   phoneHref: "tel:0948443899",
   whatsappHref:
@@ -102,7 +102,7 @@ export const services: Service[] = [
     h1: "Obklady v Dubnici nad Váhom a okolí",
     intro:
       "Realizujeme obklady do kúpeľní, kuchýň, technických miestností aj menších interiérov. Pri práci sledujeme presné napojenia, rovinu, škáry a čistý detail, aby výsledok pôsobil kvalitne aj po rokoch používania.",
-    metaTitle: "Obklady Dubnica nad Váhom | mv MARTIŠ",
+    metaTitle: "Obklady Dubnica nad Váhom | Martiš MV",
     metaDescription:
       "Obklady do kúpeľní, kuchýň a interiérov v Dubnici nad Váhom, Ilave a Trenčíne. Obhliadka, presný postup a čistý detail.",
     localities,
@@ -117,7 +117,7 @@ export const services: Service[] = [
       "obklady",
       "Cenu ovplyvňuje plocha, formát obkladu, stav podkladu, počet rezov, rohy, niky, sokle a náročnosť napojenia na sanitu alebo sprchový kút."
     ),
-    primaryCta: "Objednať obhliadku",
+    primaryCta: "Rezervovať obhliadku",
     secondaryCta: "Poslať fotky cez WhatsApp",
     paymentType: "reservation_fee",
     jsonLd: {
@@ -133,7 +133,7 @@ export const services: Service[] = [
     h1: "Dlažby v Dubnici nad Váhom a okolí",
     intro:
       "Pokladáme dlažby v kúpeľniach, chodbách, vstupoch a interiérových priestoroch. Dôležitá je príprava podkladu, správny smer pokládky, čisté rezy a spoľahlivý výsledok pre každodenné používanie.",
-    metaTitle: "Dlažby Dubnica nad Váhom | Pokládka dlažby | mv MARTIŠ",
+    metaTitle: "Dlažby Dubnica nad Váhom | Pokládka dlažby | Martiš MV",
     metaDescription:
       "Pokládka dlažby v interiéri pre Dubnicu nad Váhom, Ilavu, Trenčín a okolie. Príprava podkladu, presné rezy a obhliadka.",
     localities,
@@ -148,7 +148,7 @@ export const services: Service[] = [
       "dlažby",
       "Cenu ovplyvňuje výmera, formát dlažby, rovinnosť podkladu, množstvo rezov, sokle, prechody medzi miestnosťami a prípadná príprava alebo nivelizácia."
     ),
-    primaryCta: "Objednať obhliadku",
+    primaryCta: "Rezervovať obhliadku",
     secondaryCta: "Poslať fotky podlahy",
     paymentType: "reservation_fee",
     jsonLd: {
@@ -164,7 +164,7 @@ export const services: Service[] = [
     h1: "Omietky a úpravy stien v Dubnici nad Váhom a okolí",
     intro:
       "Opravujeme a pripravujeme steny tak, aby interiér pôsobil čisto ešte pred finálnym zariadením. Riešime povrchové úpravy, opravy po zásahoch, dorovnanie detailov a prípravu pred ďalšími prácami.",
-    metaTitle: "Omietky Dubnica nad Váhom | Úpravy stien | mv MARTIŠ",
+    metaTitle: "Omietky Dubnica nad Váhom | Úpravy stien | Martiš MV",
     metaDescription:
       "Omietky, opravy a príprava stien pre byty a domy v Dubnici nad Váhom, Ilave, Trenčíne a okolí. Obhliadka a jasný postup.",
     localities,
@@ -179,7 +179,7 @@ export const services: Service[] = [
       "omietky",
       "Cenu ovplyvňuje stav stien, rozsah opráv, hrúbka vrstiev, prístupnosť priestoru, sušenie a požadovaná pripravenosť pred finálnou úpravou."
     ),
-    primaryCta: "Objednať obhliadku",
+    primaryCta: "Rezervovať obhliadku",
     secondaryCta: "Poslať fotky stien",
     paymentType: "reservation_fee",
     jsonLd: {
@@ -195,7 +195,7 @@ export const services: Service[] = [
     h1: "Podlahy v Dubnici nad Váhom a okolí",
     intro:
       "Podlahy riešime od prípravy priestoru až po finálne uloženie a detail pri stenách, dverách a prechodoch. Pomáhame zvoliť praktické riešenie pre každodenné bývanie aj rekonštrukciu na kľúč.",
-    metaTitle: "Podlahy Dubnica nad Váhom | Montáž podláh | mv MARTIŠ",
+    metaTitle: "Podlahy Dubnica nad Váhom | Montáž podláh | Martiš MV",
     metaDescription:
       "Montáž a príprava podláh v Dubnici nad Váhom, Ilave, Trenčíne a okolí. Detail pri stenách, dverách a prechodoch.",
     localities,
@@ -210,7 +210,7 @@ export const services: Service[] = [
       "podlahy",
       "Cenu ovplyvňuje typ podlahy, výmera, pripravenosť podkladu, množstvo prechodov, lišty, rezanie a nadväznosť na dvere alebo existujúce povrchy."
     ),
-    primaryCta: "Objednať obhliadku",
+    primaryCta: "Rezervovať obhliadku",
     secondaryCta: "Poslať fotky priestoru",
     paymentType: "reservation_fee",
     jsonLd: {
@@ -226,7 +226,7 @@ export const services: Service[] = [
     h1: "Montáž sanity v Dubnici nad Váhom a okolí",
     intro:
       "Montáž sanity berieme ako finálny detail kúpeľne alebo WC, ktorý musí dobre fungovať aj dobre vyzerať. Riešime napojenia, osadenie, praktickú výšku a čistý výsledok v nadväznosti na obklady.",
-    metaTitle: "Sanita Dubnica nad Váhom | Montáž sanity | mv MARTIŠ",
+    metaTitle: "Sanita Dubnica nad Váhom | Montáž sanity | Martiš MV",
     metaDescription:
       "Montáž sanity pre kúpeľne a WC v Dubnici nad Váhom, Ilave, Trenčíne a okolí. Čisté osadenie a nadväznosť na obklady.",
     localities,
@@ -241,7 +241,7 @@ export const services: Service[] = [
       "sanitu",
       "Cenu ovplyvňuje typ sanity, pripravenosť prívodov a odpadov, stav obkladov, rozsah montáže, počet prvkov a potreba úprav pred osadením."
     ),
-    primaryCta: "Objednať konzultáciu",
+    primaryCta: "Dohodnúť konzultáciu",
     secondaryCta: "Poslať fotky kúpeľne",
     paymentType: "consultation_fee",
     jsonLd: {
@@ -257,7 +257,7 @@ export const services: Service[] = [
     h1: "Dvere, zárubne a kovania v Dubnici nad Váhom a okolí",
     intro:
       "Osádzame interiérové dvere, zárubne a kovania tak, aby sedeli s podlahou, stenami aj celkovým štýlom rekonštrukcie. Dôležitá je presnosť, rovina a čisté napojenie na hotový interiér.",
-    metaTitle: "Dvere a zárubne Dubnica nad Váhom | mv MARTIŠ",
+    metaTitle: "Dvere a zárubne Dubnica nad Váhom | Martiš MV",
     metaDescription:
       "Osadenie interiérových dverí, zárubní a kovaní v Dubnici nad Váhom, Ilave, Trenčíne a okolí. Presné napojenie na podlahy a steny.",
     localities,
@@ -272,7 +272,7 @@ export const services: Service[] = [
       "dvere, zárubne a kovania",
       "Cenu ovplyvňuje počet kusov, typ zárubne, pripravenosť stavebného otvoru, nadväznosť na podlahu, kovanie a prípadné úpravy okolia."
     ),
-    primaryCta: "Objednať obhliadku",
+    primaryCta: "Rezervovať obhliadku",
     secondaryCta: "Poslať rozmery otvorov",
     paymentType: "reservation_fee",
     jsonLd: {
@@ -288,7 +288,7 @@ export const services: Service[] = [
     h1: "Sadrokartón v Dubnici nad Váhom a okolí",
     intro:
       "Sadrokartón používame pri priečkach, podhľadoch, zakrytí rozvodov aj úpravách dispozície. Navrhujeme praktické riešenia, ktoré pomôžu priestoru pôsobiť čistejšie a lepšie pripravené na dokončenie.",
-    metaTitle: "Sadrokartón Dubnica nad Váhom | Priečky a podhľady | mv MARTIŠ",
+    metaTitle: "Sadrokartón Dubnica nad Váhom | Priečky a podhľady | Martiš MV",
     metaDescription:
       "Sadrokartónové priečky, podhľady a zakrytie rozvodov v Dubnici nad Váhom, Ilave, Trenčíne a okolí. Obhliadka a realizácia.",
     localities,
@@ -303,7 +303,7 @@ export const services: Service[] = [
       "sadrokartón",
       "Cenu ovplyvňuje plocha, typ konštrukcie, výška, členitosť, izolácia, zakrytie rozvodov a požadovaná pripravenosť pred finálnou úpravou."
     ),
-    primaryCta: "Objednať obhliadku",
+    primaryCta: "Rezervovať obhliadku",
     secondaryCta: "Poslať fotky priestoru",
     paymentType: "reservation_fee",
     jsonLd: {
@@ -319,7 +319,7 @@ export const services: Service[] = [
     h1: "Rekonštrukcie interiéru na kľúč v Dubnici nad Váhom a okolí",
     intro:
       "Kompletné rekonštrukcie interiéru spájajú obklady, dlažby, podlahy, sanitu, sadrokartón, dvere a finálne detaily do jedného súvislého postupu. Cieľom je premeniť starší priestor na hotové bývanie bez zbytočného chaosu.",
-    metaTitle: "Rekonštrukcie interiéru na kľúč Dubnica nad Váhom | mv MARTIŠ",
+    metaTitle: "Rekonštrukcie interiéru na kľúč Dubnica nad Váhom | Martiš MV",
     metaDescription:
       "Kompletné rekonštrukcie interiéru na kľúč v Dubnici nad Váhom, Ilave, Trenčíne a okolí. Obhliadka, ponuka, realizácia a odovzdanie.",
     localities,
@@ -334,7 +334,7 @@ export const services: Service[] = [
       "rekonštrukciu interiéru na kľúč",
       "Cenu ovplyvňuje rozsah prác, stav priestoru, materiály, počet profesií, termín, dostupnosť priestoru a miera dokončenia, ktorú zákazník očakáva."
     ),
-    primaryCta: "Objednať konzultáciu",
+    primaryCta: "Dohodnúť konzultáciu",
     secondaryCta: "Poslať fotky priestoru",
     paymentType: "consultation_fee",
     jsonLd: {

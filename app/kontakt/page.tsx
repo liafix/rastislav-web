@@ -4,9 +4,9 @@ import { company } from "@/lib/content/services";
 import { buildPageMetadata, localBusinessJsonLd } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Kontakt | Rekonštrukcie interiéru Dubnica nad Váhom | mv MARTIŠ",
+  title: "Kontakt | Rekonštrukcie interiéru Dubnica nad Váhom | Martiš MV",
   description:
-    "Kontakt na mv MARTIŠ pre interiérové rekonštrukcie, obklady, dlažby, podlahy a sanitu v Dubnici nad Váhom a okolí.",
+    "Kontakt na Martiš MV pre interiérové rekonštrukcie, obklady, dlažby, podlahy a sanitu v Dubnici nad Váhom a okolí.",
   path: "/kontakt"
 });
 

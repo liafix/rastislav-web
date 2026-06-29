@@ -26,6 +26,11 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[0-9+\s]{9,16}$/;
 const attributionFields = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"] as const;
 
+const paymentDescriptions: Record<PaymentType, string> = {
+  reservation_fee: "Platený rezervačný krok za obhliadku priestoru. Pomôže nám vyhradiť čas na seriózne posúdenie rozsahu.",
+  consultation_fee: "Platená konzultácia pre širší rozsah, výber riešení alebo technické otázky pred finálnou dohodou."
+};
+
 function getServicePaymentType(serviceSlug: string): PaymentType {
   const service = services.find((item) => item.slug === serviceSlug);
   return service?.paymentType ?? "reservation_fee";
@@ -133,7 +138,7 @@ export function BookingForm() {
       }
 
       if (!result.checkoutUrl) {
-        throw new Error("Stripe Checkout nevrátil platobnú URL.");
+        throw new Error("Nepodarilo sa otvoriť bezpečnú platbu. Skúste to, prosím, znova alebo nás kontaktujte telefonicky.");
       }
 
       window.location.assign(result.checkoutUrl);
@@ -189,7 +194,10 @@ export function BookingForm() {
       </div>
 
       <fieldset className="grid gap-3">
-        <legend className="text-sm font-black">Typ platby</legend>
+        <legend className="text-sm font-black">Vyberte ďalší krok</legend>
+        <p className="text-sm leading-6 text-black/58">
+          Platba rezervuje obhliadku alebo konzultáciu. Nenahrádza finálnu dohodu o celej realizácii.
+        </p>
         <div className="grid gap-3 sm:grid-cols-2">
           {Object.entries(PAYMENT_LABELS).map(([value, label]) => {
             const typedValue = value as PaymentType;
@@ -215,6 +223,7 @@ export function BookingForm() {
                   <span>
                     <span className="block font-black">{label}</span>
                     <span className="mt-1 block text-sm font-bold text-[#e44f22]">{formatPrice(PAYMENT_AMOUNTS_CENTS[typedValue])}</span>
+                    <span className="mt-2 block text-sm leading-6 text-black/58">{paymentDescriptions[typedValue]}</span>
                   </span>
                 </span>
               </label>
@@ -245,7 +254,7 @@ export function BookingForm() {
 
       <label className="flex gap-3 rounded-md border border-black/10 bg-white/60 p-4 text-sm leading-6">
         <input className="mt-1 size-5 accent-[#e44f22]" type="checkbox" name="consent" required />
-        <span>Súhlasím so spracovaním údajov pre účel kontaktovania k obhliadke.</span>
+        <span>Súhlasím so spracovaním údajov pre účel kontaktovania k obhliadke alebo konzultácii.</span>
       </label>
       {errors.consent ? <p className="-mt-3 text-sm font-bold text-[#b42318]">{errors.consent}</p> : null}
 
@@ -260,10 +269,10 @@ export function BookingForm() {
         {isSubmitting ? (
           <span className="flex items-center gap-2">
             <Loader2 className="animate-spin" size={18} aria-hidden="true" />
-            Presmerúvame na platbu
+            Otvárame bezpečnú platbu
           </span>
         ) : (
-          "Pokračovať na platbu"
+          "Pokračovať na bezpečnú platbu"
         )}
       </button>
     </form>

@@ -5,8 +5,8 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = {
   ...buildPageMetadata({
-    title: "Platba prijatá | mv MARTIŠ",
-    description: "Ďakujeme. Platba bola prijatá a obhliadka alebo konzultácia bude potvrdená.",
+    title: "Platba prijatá | Martiš MV",
+    description: "Ďakujeme. Platba bola prijatá a Martiš MV sa ozve k potvrdeniu praktických detailov.",
     path: "/booking/success"
   }),
   robots: {
@@ -23,7 +23,8 @@ export default function BookingSuccessPage() {
           <CheckCircle2 className="mx-auto text-[#257a57]" size={44} aria-hidden="true" />
           <h1 className="mt-5 text-4xl font-black">Platba bola prijatá.</h1>
           <p className="mt-4 leading-7 text-black/64">
-            Ďakujeme. Webhook zo Stripe je zdroj pravdy pre potvrdenie platby. Po overení sa ozveme s ďalším krokom.
+            Ďakujeme. Prijali sme vašu požiadavku na obhliadku alebo konzultáciu. Ozveme sa, aby sme potvrdili praktické
+            detaily termínu a ďalší postup.
           </p>
           <Link href="/" className="btn-primary mt-6">
             Späť na úvod

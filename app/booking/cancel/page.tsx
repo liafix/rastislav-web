@@ -4,7 +4,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = {
   ...buildPageMetadata({
-    title: "Platba nebola dokončená | mv MARTIŠ",
+    title: "Platba nebola dokončená | Martiš MV",
     description: "Platba nebola dokončená. Môžete sa vrátiť k objednávke obhliadky alebo nás kontaktovať telefonicky.",
     path: "/booking/cancel"
   }),
@@ -22,14 +22,15 @@ export default function BookingCancelPage() {
           <p className="text-sm font-black uppercase text-[#e44f22]">Platba nedokončená</p>
           <h1 className="mt-4 text-4xl font-black">Platba nebola dokončená.</h1>
           <p className="mt-4 leading-7 text-black/64">
-            Objednávku môžete skúsiť znova alebo sa ozvať telefonicky či cez WhatsApp.
+            Rezerváciu môžete skúsiť znova alebo sa ozvať telefonicky či cez WhatsApp. Termín bez dokončenej platby
+            zatiaľ nie je potvrdený.
           </p>
           <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
             <Link href="/booking" className="btn-primary">
-              Späť na obhliadku
+              Späť na rezerváciu
             </Link>
             <Link href="/kontakt" className="btn-secondary">
-              Kontakt
+              Kontaktovať
             </Link>
           </div>
         </div>

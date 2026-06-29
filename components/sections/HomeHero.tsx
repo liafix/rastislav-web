@@ -69,7 +69,7 @@ export function HomeHero() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row" data-hero-fade>
             <MagneticButton className="inline-flex">
               <Link href="/booking" className="btn-primary hero-primary-cta hero-primary-cta--light">
-                Objednať obhliadku
+                Rezervovať obhliadku
                 <ArrowUpRight size={18} aria-hidden="true" />
               </Link>
             </MagneticButton>
@@ -88,7 +88,7 @@ export function HomeHero() {
         </div>
 
         <aside className="hero-process-card hero-process-card--floating mt-10 lg:absolute lg:bottom-20 lg:right-8 lg:mt-0" data-parallax="18">
-          <p className="text-xs font-black uppercase text-[#d65a2a]">Od priestoru k dokonalosti</p>
+          <p className="text-xs font-black uppercase text-[#d65a2a]">Od obhliadky po odovzdanie</p>
           <h2 className="mt-5 font-serif text-3xl leading-tight text-[#151311] sm:text-4xl">
             Obhliadka, detail,
             <br />
@@ -96,7 +96,7 @@ export function HomeHero() {
           </h2>
           <div className="mt-5 h-px w-12 bg-[#d65a2a]" />
           <p className="mt-6 max-w-sm text-sm leading-7 text-black/62">
-            Každý projekt vedieme s dôrazom na remeslo, materiály a precíznosť v každom kroku.
+            Každý projekt vedieme cez jasný postup: posúdenie priestoru, prípravu, realizáciu a čisté odovzdanie.
           </p>
 
           <div className="mt-7 grid grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr] items-start gap-2 border-t border-black/10 pt-5">

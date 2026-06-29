@@ -4,9 +4,9 @@ import { services } from "@/lib/content/services";
 import { absoluteUrl, buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Služby | Rekonštrukcie interiéru Dubnica nad Váhom | mv MARTIŠ",
+  title: "Služby | Rekonštrukcie interiéru Dubnica nad Váhom | Martiš MV",
   description:
-    "Prehľad služieb mv MARTIŠ: obklady, dlažby, omietky, podlahy, sanita, dvere, sadrokartón a rekonštrukcie interiéru na kľúč.",
+    "Prehľad služieb Martiš MV: obklady, dlažby, omietky, podlahy, sanita, dvere, sadrokartón a rekonštrukcie interiéru na kľúč.",
   path: "/sluzby"
 });
 
@@ -35,8 +35,8 @@ export default function ServicesPage() {
           Interiérové práce pre Dubnicu nad Váhom a okolie.
         </h1>
         <p className="mt-6 max-w-2xl text-lg leading-8 text-black/64">
-          Vyberte službu a pozrite si jednoduchý postup obhliadky, ponuky, realizácie a odovzdania. Každá služba má
-          vlastnú stránku s lokálnym kontextom, častými otázkami a jasným ďalším krokom.
+          Vyberte službu a pozrite si, čo je pri nej dôležité ešte pred cenovou ponukou. Nájdete tu postup, praktické
+          otázky aj ďalší krok pre obhliadku alebo konzultáciu.
         </p>
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service, index) => (

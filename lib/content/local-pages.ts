@@ -25,7 +25,7 @@ export const localPages: LocalPage[] = [
     slug: "rekonstrukcie-dubnica-nad-vahom",
     path: "/rekonstrukcie-dubnica-nad-vahom",
     location: "Dubnica nad Váhom",
-    title: "Rekonštrukcie interiéru Dubnica nad Váhom | mv MARTIŠ",
+    title: "Rekonštrukcie interiéru Dubnica nad Váhom | Martiš MV",
     description:
       "Prémiové rekonštrukcie interiéru v Dubnici nad Váhom: obklady, dlažby, podlahy, sanita, sadrokartón a práca na kľúč.",
     h1: "Rekonštrukcie interiéru v Dubnici nad Váhom",
@@ -58,7 +58,7 @@ export const localPages: LocalPage[] = [
       }
     ],
     serviceLinks: ["rekonstrukcie-interieru", "obklady", "dlazby", "sanita"],
-    ctaText: "Začať obhliadkou v Dubnici",
+    ctaText: "Rezervovať obhliadku v Dubnici",
     faq: [
       {
         question: "Robíte v Dubnici aj menšie práce?",
@@ -76,7 +76,7 @@ export const localPages: LocalPage[] = [
     slug: "rekonstrukcie-trencin",
     path: "/rekonstrukcie-trencin",
     location: "Trenčín",
-    title: "Rekonštrukcie interiéru Trenčín | mv MARTIŠ",
+    title: "Rekonštrukcie interiéru Trenčín | Martiš MV",
     description:
       "Interiérové rekonštrukcie pre Trenčín a okolie: kúpeľne, podlahy, obklady, sadrokartón, sanita a koordinovaný postup prác.",
     h1: "Rekonštrukcie interiéru pre Trenčín",
@@ -109,7 +109,7 @@ export const localPages: LocalPage[] = [
       }
     ],
     serviceLinks: ["rekonstrukcie-interieru", "podlahy", "sadrokarton", "dvere-zarubne-kovania"],
-    ctaText: "Dohodnúť rekonštrukciu v Trenčíne",
+    ctaText: "Dohodnúť ďalší krok v Trenčíne",
     faq: [
       {
         question: "Chodíte na obhliadky aj do Trenčína?",
@@ -127,7 +127,7 @@ export const localPages: LocalPage[] = [
     slug: "rekonstrukcie-ilava",
     path: "/rekonstrukcie-ilava",
     location: "Ilava",
-    title: "Rekonštrukcie interiéru Ilava | mv MARTIŠ",
+    title: "Rekonštrukcie interiéru Ilava | Martiš MV",
     description:
       "Rekonštrukcie interiérov v Ilave: obhliadka, kúpeľne, obklady, dlažby, podlahy, sadrokartón a čisté dokončenie detailov.",
     h1: "Rekonštrukcie interiéru v Ilave",
@@ -160,12 +160,12 @@ export const localPages: LocalPage[] = [
       }
     ],
     serviceLinks: ["obklady", "dlazby", "omietky", "rekonstrukcie-interieru"],
-    ctaText: "Objednať obhliadku v Ilave",
+    ctaText: "Rezervovať obhliadku v Ilave",
     faq: [
       {
         question: "Je Ilava v obsluhovanej oblasti?",
         answer:
-          "Áno, Ilava patrí medzi lokality, pre ktoré web komunikuje interiérové rekonštrukcie a súvisiace služby."
+          "Áno, Ilava patrí medzi obsluhované lokality pre interiérové rekonštrukcie a súvisiace práce podľa rozsahu."
       },
       {
         question: "Stačí poslať fotky pred obhliadkou?",
@@ -178,7 +178,7 @@ export const localPages: LocalPage[] = [
     slug: "rekonstrukcie-nova-dubnica",
     path: "/rekonstrukcie-nova-dubnica",
     location: "Nová Dubnica",
-    title: "Rekonštrukcie interiéru Nová Dubnica | mv MARTIŠ",
+    title: "Rekonštrukcie interiéru Nová Dubnica | Martiš MV",
     description:
       "Rekonštrukcie interiérov pre Novú Dubnicu: lokálny kontakt, obhliadka, kúpeľne, podlahy, obklady, sanita a sadrokartón.",
     h1: "Rekonštrukcie interiéru v Novej Dubnici",
@@ -211,7 +211,7 @@ export const localPages: LocalPage[] = [
       }
     ],
     serviceLinks: ["rekonstrukcie-interieru", "sanita", "podlahy", "sadrokarton"],
-    ctaText: "Dohodnúť obhliadku v Novej Dubnici",
+    ctaText: "Rezervovať obhliadku v Novej Dubnici",
     faq: [
       {
         question: "Riešite aj rekonštrukcie v Novej Dubnici?",
@@ -229,7 +229,7 @@ export const localPages: LocalPage[] = [
     slug: "rekonstrukcie-trencianska-tepla",
     path: "/rekonstrukcie-trencianska-tepla",
     location: "Trenčianska Teplá",
-    title: "Rekonštrukcie interiéru Trenčianska Teplá | mv MARTIŠ",
+    title: "Rekonštrukcie interiéru Trenčianska Teplá | Martiš MV",
     description:
       "Interiérové rekonštrukcie v Trenčianskej Teplej: obklady, dlažby, podlahy, sanita, sadrokartón a praktický postup prác.",
     h1: "Rekonštrukcie interiéru v Trenčianskej Teplej",
@@ -262,12 +262,12 @@ export const localPages: LocalPage[] = [
       }
     ],
     serviceLinks: ["rekonstrukcie-interieru", "obklady", "podlahy", "dvere-zarubne-kovania"],
-    ctaText: "Začať obhliadkou v Trenčianskej Teplej",
+    ctaText: "Rezervovať obhliadku v Trenčianskej Teplej",
     faq: [
       {
         question: "Je Trenčianska Teplá v dosahu?",
         answer:
-          "Áno, stránka ju rieši ako blízku lokalitu v okolí Dubnice nad Váhom a Považia."
+          "Áno, Trenčianska Teplá patrí medzi blízke lokality v okolí Dubnice nad Váhom a Považia."
       },
       {
         question: "Viete prísť aj k rodinnému domu?",
