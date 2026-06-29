@@ -3,11 +3,17 @@ import type { Metadata } from "next";
 import { CheckCircle2 } from "lucide-react";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "Platba prijatá | mv MARTIŠ",
-  description: "Ďakujeme. Platba bola prijatá a obhliadka alebo konzultácia bude potvrdená.",
-  path: "/booking/success"
-});
+export const metadata: Metadata = {
+  ...buildPageMetadata({
+    title: "Platba prijatá | mv MARTIŠ",
+    description: "Ďakujeme. Platba bola prijatá a obhliadka alebo konzultácia bude potvrdená.",
+    path: "/booking/success"
+  }),
+  robots: {
+    index: false,
+    follow: false
+  }
+};
 
 export default function BookingSuccessPage() {
   return (

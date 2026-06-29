@@ -1,28 +1,80 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2 } from "lucide-react";
+import { AlertCircle, Loader2 } from "lucide-react";
+import { PAYMENT_AMOUNTS_CENTS, PAYMENT_LABELS } from "@/lib/commerce/config";
 import { services } from "@/lib/content/services";
+import { isPaymentType } from "@/lib/contracts";
+import type { PaymentType } from "@/lib/contracts";
 
 type ErrorMap = Partial<Record<string, string>>;
 
+type CheckoutResponse =
+  | {
+      ok: true;
+      leadId: number;
+      bookingId: number;
+      paymentId: number;
+      checkoutUrl?: string | null;
+    }
+  | {
+      ok: false;
+      error?: string;
+    };
+
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^[0-9+\s]{9,16}$/;
+const attributionFields = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"] as const;
+
+function getServicePaymentType(serviceSlug: string): PaymentType {
+  const service = services.find((item) => item.slug === serviceSlug);
+  return service?.paymentType ?? "reservation_fee";
+}
+
+function formatPrice(amountCents: number) {
+  return new Intl.NumberFormat("sk-SK", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0
+  }).format(amountCents / 100);
+}
+
+function readAttributionPayload() {
+  if (typeof window === "undefined") return {};
+
+  const searchParams = new URLSearchParams(window.location.search);
+  const payload: Record<string, string> = {
+    landing_page: `${window.location.pathname}${window.location.search}`,
+    referrer: document.referrer
+  };
+
+  for (const field of attributionFields) {
+    const value = searchParams.get(field);
+    if (value) payload[field] = value;
+  }
+
+  return payload;
+}
 
 export function BookingForm() {
   const [errors, setErrors] = useState<ErrorMap>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
+  const [paymentType, setPaymentType] = useState<PaymentType>("reservation_fee");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   function validate(form: HTMLFormElement) {
     const data = new FormData(form);
     const nextErrors: ErrorMap = {};
     const email = String(data.get("email") || "");
     const phone = String(data.get("phone") || "");
+    const selectedPaymentType = String(data.get("paymentType") || "");
 
     if (!String(data.get("name") || "").trim()) nextErrors.name = "Zadajte meno.";
     if (!phoneRegex.test(phone.trim())) nextErrors.phone = "Zadajte platné telefónne číslo.";
     if (email && !emailRegex.test(email.trim())) nextErrors.email = "Zadajte platný email.";
     if (!String(data.get("service") || "")) nextErrors.service = "Vyberte službu.";
+    if (!isPaymentType(selectedPaymentType)) nextErrors.paymentType = "Vyberte typ platby.";
     if (!String(data.get("location") || "").trim()) nextErrors.location = "Zadajte lokalitu.";
     if (!String(data.get("date") || "")) nextErrors.date = "Vyberte preferovaný dátum.";
     if (!String(data.get("time") || "")) nextErrors.time = "Vyberte preferovaný čas.";
@@ -31,24 +83,76 @@ export function BookingForm() {
     return nextErrors;
   }
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     const nextErrors = validate(form);
     setErrors(nextErrors);
-    if (Object.keys(nextErrors).length === 0 && form.checkValidity()) {
-      setSubmitted(true);
+    setSubmitError("");
+
+    if (Object.keys(nextErrors).length > 0 || !form.checkValidity()) {
+      return;
+    }
+
+    const data = new FormData(form);
+    const selectedPaymentType = String(data.get("paymentType") || "");
+
+    if (!isPaymentType(selectedPaymentType)) {
+      setErrors((current) => ({ ...current, paymentType: "Vyberte typ platby." }));
+      return;
+    }
+
+    const payload = {
+      ...readAttributionPayload(),
+      name: String(data.get("name") || ""),
+      phone: String(data.get("phone") || ""),
+      email: String(data.get("email") || ""),
+      service: String(data.get("service") || ""),
+      location: String(data.get("location") || ""),
+      message: String(data.get("message") || ""),
+      preferredDate: String(data.get("date") || ""),
+      preferredTime: String(data.get("time") || ""),
+      paymentType: selectedPaymentType,
+      consent: data.get("consent") === "on"
+    };
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/checkout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+      const result = (await response.json()) as CheckoutResponse;
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.ok ? "Platbu sa nepodarilo pripraviť." : result.error || "Platbu sa nepodarilo pripraviť.");
+      }
+
+      if (!result.checkoutUrl) {
+        throw new Error("Stripe Checkout nevrátil platobnú URL.");
+      }
+
+      window.location.assign(result.checkoutUrl);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : "Platbu sa nepodarilo pripraviť.");
+      setIsSubmitting(false);
     }
   }
 
-  if (submitted) {
-    return (
-      <div className="rounded-md border border-[#257a57]/25 bg-white/74 p-8 text-center shadow-[0_24px_70px_rgba(20,20,20,0.06)]">
-        <CheckCircle2 className="mx-auto text-[#257a57]" size={42} aria-hidden="true" />
-        <h2 className="mt-5 text-3xl font-black">Ďakujeme!</h2>
-        <p className="mt-3 text-lg text-black/66">Ozveme sa vám čoskoro.</p>
-      </div>
-    );
+  function handleServiceChange(event: React.ChangeEvent<HTMLSelectElement>) {
+    const serviceSlug = event.target.value;
+    setSelectedService(serviceSlug);
+    setPaymentType(getServicePaymentType(serviceSlug));
+  }
+
+  function handlePaymentTypeChange(event: React.ChangeEvent<HTMLInputElement>) {
+    if (isPaymentType(event.target.value)) {
+      setPaymentType(event.target.value);
+    }
   }
 
   return (
@@ -68,7 +172,7 @@ export function BookingForm() {
 
       <div className="grid gap-5 md:grid-cols-2">
         <Field label="Služba" name="service" error={errors.service}>
-          <select className="field-input" id="service" name="service" required defaultValue="">
+          <select className="field-input" id="service" name="service" required value={selectedService} onChange={handleServiceChange}>
             <option value="" disabled>
               Vyberte službu
             </option>
@@ -83,6 +187,42 @@ export function BookingForm() {
           <input className="field-input" id="location" name="location" required placeholder="Dubnica nad Váhom" />
         </Field>
       </div>
+
+      <fieldset className="grid gap-3">
+        <legend className="text-sm font-black">Typ platby</legend>
+        <div className="grid gap-3 sm:grid-cols-2">
+          {Object.entries(PAYMENT_LABELS).map(([value, label]) => {
+            const typedValue = value as PaymentType;
+            const checked = paymentType === typedValue;
+
+            return (
+              <label
+                key={typedValue}
+                className={`grid cursor-pointer gap-2 rounded-md border p-4 transition ${
+                  checked ? "border-[#e44f22] bg-white shadow-[0_16px_46px_rgba(228,79,34,0.13)]" : "border-black/10 bg-white/60 hover:border-black/24"
+                }`}
+              >
+                <span className="flex items-start gap-3">
+                  <input
+                    className="mt-1 size-4 accent-[#e44f22]"
+                    type="radio"
+                    name="paymentType"
+                    value={typedValue}
+                    checked={checked}
+                    onChange={handlePaymentTypeChange}
+                    required
+                  />
+                  <span>
+                    <span className="block font-black">{label}</span>
+                    <span className="mt-1 block text-sm font-bold text-[#e44f22]">{formatPrice(PAYMENT_AMOUNTS_CENTS[typedValue])}</span>
+                  </span>
+                </span>
+              </label>
+            );
+          })}
+        </div>
+        {errors.paymentType ? <p className="text-sm font-bold text-[#b42318]">{errors.paymentType}</p> : null}
+      </fieldset>
 
       <div className="grid gap-5 md:grid-cols-2">
         <Field label="Preferovaný dátum" name="date" error={errors.date}>
@@ -109,8 +249,22 @@ export function BookingForm() {
       </label>
       {errors.consent ? <p className="-mt-3 text-sm font-bold text-[#b42318]">{errors.consent}</p> : null}
 
-      <button className="btn-primary w-full sm:w-fit" type="submit">
-        Odoslať žiadosť
+      {submitError ? (
+        <p className="flex items-start gap-2 rounded-md border border-[#b42318]/20 bg-[#fff4f2] p-4 text-sm font-bold leading-6 text-[#b42318]" role="alert">
+          <AlertCircle className="mt-0.5 shrink-0" size={18} aria-hidden="true" />
+          <span>{submitError}</span>
+        </p>
+      ) : null}
+
+      <button className="btn-primary w-full disabled:cursor-not-allowed disabled:opacity-70 sm:w-fit" type="submit" disabled={isSubmitting}>
+        {isSubmitting ? (
+          <span className="flex items-center gap-2">
+            <Loader2 className="animate-spin" size={18} aria-hidden="true" />
+            Presmerúvame na platbu
+          </span>
+        ) : (
+          "Pokračovať na platbu"
+        )}
       </button>
     </form>
   );

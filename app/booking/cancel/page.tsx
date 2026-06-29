@@ -2,11 +2,17 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = buildPageMetadata({
-  title: "Platba nebola dokončená | mv MARTIŠ",
-  description: "Platba nebola dokončená. Môžete sa vrátiť k objednávke obhliadky alebo nás kontaktovať telefonicky.",
-  path: "/booking/cancel"
-});
+export const metadata: Metadata = {
+  ...buildPageMetadata({
+    title: "Platba nebola dokončená | mv MARTIŠ",
+    description: "Platba nebola dokončená. Môžete sa vrátiť k objednávke obhliadky alebo nás kontaktovať telefonicky.",
+    path: "/booking/cancel"
+  }),
+  robots: {
+    index: false,
+    follow: false
+  }
+};
 
 export default function BookingCancelPage() {
   return (
