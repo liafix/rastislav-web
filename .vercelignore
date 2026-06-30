@@ -29,3 +29,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# Keep required runtime 3D model for production
+!public/
+!public/models/
+!public/models/ducato_optimized.glb
