@@ -1,18 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import {
-  ArrowUpRight,
-  CheckCircle2
-} from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { BookingActions } from "@/components/marketing/BookingActions";
 import { HomePageMotion } from "@/components/motion/HomePageMotion";
-import { ProofCard } from "@/components/marketing/ProofCard";
 import { CoreServicesSection } from "@/components/sections/CoreServicesSection";
 import { DetailCraftSection } from "@/components/sections/DetailCraftSection";
 import { HomeHero } from "@/components/sections/HomeHero";
 import { InteriorProcessSection } from "@/components/sections/InteriorProcessSection";
-import { processSteps, services } from "@/lib/content/services";
+import { ProofBeforeContactSection } from "@/components/sections/ProofBeforeContactSection";
+import { services } from "@/lib/content/services";
 import { buildPageMetadata, localBusinessJsonLd } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -21,24 +18,6 @@ export const metadata: Metadata = buildPageMetadata({
     "Prémiové interiérové rekonštrukcie, obklady, dlažby, podlahy, sanita, dvere a sadrokartón pre Dubnicu nad Váhom, Ilavu, Trenčín a okolie.",
   path: "/"
 });
-
-const proofItems = [
-  {
-    icon: "shield" as const,
-    title: "Lokálny kontakt",
-    text: "Dubnica nad Váhom, Ilava, Trenčín a okolité obce. Rýchla obhliadka a jasná komunikácia."
-  },
-  {
-    icon: "ruler" as const,
-    title: "Presný postup",
-    text: "Obklady, dlažby, sanita, podlahy aj sadrokartón nadväzujú v jednom zrozumiteľnom procese."
-  },
-  {
-    icon: "sparkles" as const,
-    title: "Hotový priestor",
-    text: "Cieľom nie je iba vykonaná práca, ale interiér, ktorý pôsobí pokojne, čisto a dôveryhodne."
-  }
-];
 
 export default function Home() {
   return (
@@ -122,39 +101,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        data-scene-stage="proof"
-        data-scene-intensity="medium"
-        className="relative z-10 bg-[#ede7dc] py-24 md:py-32"
-      >
-        <div className="container">
-          <div data-motion="reveal" className="max-w-3xl">
-            <p className="text-sm font-black uppercase text-[#e44f22]">Dôkaz pred kontaktom</p>
-            <h2 className="mt-4 text-4xl font-black leading-tight sm:text-6xl">
-              Dobrý výsledok začína jasnou dohodou pred prvým zásahom do priestoru.
-            </h2>
-          </div>
-
-          <div data-motion="stagger" className="mt-10 grid gap-4 md:grid-cols-3">
-            {proofItems.map((item) => (
-              <div key={item.title} data-motion-item>
-                <ProofCard icon={item.icon} title={item.title} text={item.text} />
-              </div>
-            ))}
-          </div>
-
-          <div data-motion="stagger" className="mt-10 grid gap-3 md:grid-cols-4">
-            {processSteps.map((step, index) => (
-              <div key={step} data-motion-item className="flex items-center gap-3 rounded-md border border-black/10 bg-[#f8f3e8]/70 p-4">
-                <CheckCircle2 className="shrink-0 text-[#257a57]" size={20} aria-hidden="true" />
-                <p className="text-sm font-black">
-                  {String(index + 1).padStart(2, "0")} / {step}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProofBeforeContactSection />
 
       <section
         data-scene-stage="booking"
