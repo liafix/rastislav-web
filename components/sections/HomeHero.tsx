@@ -17,7 +17,6 @@ export function HomeHero() {
   return (
     <section
       data-scene-stage="hero"
-      data-scene-model="chair"
       data-scene-intensity="high"
       className="home-hero home-hero--cinematic relative z-10 flex min-h-[100svh] items-end overflow-hidden pt-28"
     >

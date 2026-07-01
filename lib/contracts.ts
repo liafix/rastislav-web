@@ -84,7 +84,7 @@ export type SceneDomDataset = {
 export type SceneState = {
   stage: SceneStage;
   progress: number;
-  activeModel: ModelKey;
+  activeModel: ModelKey | null;
   reducedMotion: boolean;
   webglEnabled: boolean;
 };
@@ -124,15 +124,15 @@ export type AnalyticsEventContract = AttributionPayload & {
 };
 
 export const SCENE_STAGE_MODEL_MAP = {
-  hero: "chair",
-  value: "chair",
-  craft: "nightstand",
-  services: "coffeeTable",
-  index: "coffeeTable",
-  proof: "sideTable",
-  booking: "sideTable",
+  hero: null,
+  value: null,
+  craft: null,
+  services: null,
+  index: null,
+  proof: null,
+  booking: null,
   footer: "ducato"
-} satisfies Record<SceneStage, ModelKey>;
+} satisfies Record<SceneStage, ModelKey | null>;
 
 export const SCENE_STAGE_INTENSITY_MAP = {
   hero: "high",

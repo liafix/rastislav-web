@@ -1,27 +1,15 @@
 "use client";
 
-import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { Component, Suspense, useEffect, useMemo, useRef, useState, type ErrorInfo, type ReactNode } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Environment, useGLTF } from "@react-three/drei";
-import {
-  Color,
-  DoubleSide,
-  Group,
-  MathUtils,
-  MeshPhysicalMaterial,
-  ShaderMaterial,
-  Vector3
-} from "three";
+import { Color, DoubleSide, Group, MathUtils, ShaderMaterial, Vector3 } from "three";
 import type { Mesh } from "three";
-import {
-  SCENE_STAGE_INTENSITY_MAP
-} from "@/lib/contracts";
-import type { ModelKey, SceneStage, SceneState } from "@/lib/contracts";
+import { SCENE_STAGE_INTENSITY_MAP } from "@/lib/contracts";
+import type { SceneStage, SceneState } from "@/lib/contracts";
 import { subscribeScene } from "@/lib/motion/scene-store";
 
-const MODEL_ASSETS: Partial<Record<ModelKey, string>> = {
-  ducato: "/models/ducato_optimized.glb"
-};
+const DUCATO_MODEL_PATH = "/models/ducato_optimized.glb";
 
 const CAMERA_STATES: Record<SceneStage, { position: [number, number, number]; target: [number, number, number]; fov: number }> = {
   hero: { position: [0.4, 0.8, 5.4], target: [0.65, -0.08, 0], fov: 32 },
@@ -63,7 +51,7 @@ function useSceneFallbackMode() {
 
   useEffect(() => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const compactViewport = window.matchMedia("(max-width: 767px)").matches;
+    const compactViewport = window.matchMedia("(max-width: 1023px)").matches;
     const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
 
     setFallback(reducedMotion || compactViewport || coarsePointer || !canUseWebGL());
@@ -76,7 +64,7 @@ function useSceneTelemetry(webglEnabled: boolean): SceneState & { layerOpacity: 
   const [sceneState, setSceneState] = useState<SceneState & { layerOpacity: number }>({
     stage: "hero",
     progress: 0,
-    activeModel: "chair",
+    activeModel: null,
     reducedMotion: true,
     webglEnabled,
     layerOpacity: 0
@@ -109,6 +97,23 @@ function SceneFallback() {
   );
 }
 
+class SceneErrorBoundary extends Component<{ children: ReactNode; onError: () => void }, { hasError: boolean }> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch(_: Error, __: ErrorInfo) {
+    this.props.onError();
+  }
+
+  render() {
+    if (this.state.hasError) return null;
+    return this.props.children;
+  }
+}
+
 function ShaderGrid({ sceneState }: { sceneState: SceneState }) {
   const materialRef = useRef<ShaderMaterial>(null);
   const meshRef = useRef<Mesh>(null);
@@ -122,7 +127,7 @@ function ShaderGrid({ sceneState }: { sceneState: SceneState }) {
         side: DoubleSide,
         uniforms: {
           uTime: { value: 0 },
-          uOpacity: { value: 0.16 },
+          uOpacity: { value: 0.12 },
           uAccent: { value: new Color(theme.grid) },
           uProgress: { value: 0 }
         },
@@ -156,13 +161,13 @@ function ShaderGrid({ sceneState }: { sceneState: SceneState }) {
           }
         `
       }),
-    []
+    [theme.grid]
   );
 
   useFrame((_, delta) => {
     if (!materialRef.current || !meshRef.current) return;
 
-    const targetOpacity = SCENE_STAGE_INTENSITY_MAP[sceneState.stage] === "rest" ? 0.06 : 0.16;
+    const targetOpacity = SCENE_STAGE_INTENSITY_MAP[sceneState.stage] === "rest" ? 0.04 : 0.12;
     materialRef.current.uniforms.uTime.value += delta;
     materialRef.current.uniforms.uProgress.value = MathUtils.lerp(
       materialRef.current.uniforms.uProgress.value,
@@ -187,173 +192,20 @@ function ShaderGrid({ sceneState }: { sceneState: SceneState }) {
   );
 }
 
-function useGlassMaterial() {
-  return useMemo(
-    () =>
-      new MeshPhysicalMaterial({
-        color: "#f6efe2",
-        roughness: 0.18,
-        metalness: 0.02,
-        clearcoat: 0.8,
-        clearcoatRoughness: 0.18,
-        transmission: 0.38,
-        thickness: 0.55,
-        envMapIntensity: 1.25,
-        transparent: true,
-        opacity: 0.86
-      }),
-    []
-  );
-}
-
-function ProxyModel({ modelKey, visible }: { modelKey: ModelKey; visible: boolean }) {
+function DucatoModel() {
   const groupRef = useRef<Group>(null);
-  const glassMaterial = useGlassMaterial();
-  const accent = useMemo(
-    () =>
-      new MeshPhysicalMaterial({
-        color: "#e44f22",
-        roughness: 0.34,
-        metalness: 0.18,
-        clearcoat: 0.65,
-        envMapIntensity: 0.9
-      }),
-    []
-  );
-  const darkMaterial = useMemo(
-    () =>
-      new MeshPhysicalMaterial({
-        color: "#1b1c1b",
-        roughness: 0.42,
-        metalness: 0.18,
-        clearcoat: 0.28
-      }),
-    []
-  );
-
-  useFrame(({ clock }, delta) => {
-    if (!groupRef.current) return;
-    const targetScale = visible ? 1 : 0.82;
-    const targetOpacity = visible ? 1 : 0;
-
-    groupRef.current.scale.lerp(new Vector3(targetScale, targetScale, targetScale), 0.055);
-    groupRef.current.rotation.y += delta * (visible ? 0.12 : 0.02);
-    groupRef.current.position.y = MathUtils.lerp(
-      groupRef.current.position.y,
-      visible ? Math.sin(clock.elapsedTime * 0.75) * 0.045 : -0.3,
-      0.06
-    );
-
-    groupRef.current.traverse((child) => {
-      const mesh = child as Mesh;
-      if (!mesh.material || !("opacity" in mesh.material)) return;
-      mesh.material.transparent = true;
-      mesh.material.opacity = MathUtils.lerp(mesh.material.opacity, targetOpacity, 0.08);
-    });
-  });
-
-  const commonProps = {
-    ref: groupRef,
-    visible: true
-  };
-
-  if (modelKey === "chair") {
-    return (
-      <group {...commonProps} rotation={[0.02, -0.45, 0]} position={[1.2, -0.54, 0]}>
-        <mesh material={glassMaterial} position={[0, 0.38, 0]} scale={[1.35, 0.18, 1.05]}>
-          <boxGeometry args={[1, 1, 1]} />
-        </mesh>
-        <mesh material={darkMaterial} position={[-0.42, -0.05, 0]} rotation={[0.12, 0, -0.15]} scale={[0.18, 1.05, 0.18]}>
-          <boxGeometry args={[1, 1, 1]} />
-        </mesh>
-        <mesh material={darkMaterial} position={[0.42, -0.05, 0]} rotation={[0.12, 0, 0.15]} scale={[0.18, 1.05, 0.18]}>
-          <boxGeometry args={[1, 1, 1]} />
-        </mesh>
-        <mesh material={accent} position={[0, 0.08, -0.5]} rotation={[0.55, 0, 0]} scale={[1.08, 0.12, 0.8]}>
-          <boxGeometry args={[1, 1, 1]} />
-        </mesh>
-      </group>
-    );
-  }
-
-  if (modelKey === "nightstand") {
-    return (
-      <group {...commonProps} rotation={[0.08, 0.32, 0]} position={[0.98, -0.52, -0.05]}>
-        <mesh material={glassMaterial} scale={[0.82, 0.86, 0.58]}>
-          <boxGeometry args={[1, 1, 1]} />
-        </mesh>
-        <mesh material={darkMaterial} position={[0, 0.16, 0.305]} scale={[0.66, 0.035, 0.04]}>
-          <boxGeometry args={[1, 1, 1]} />
-        </mesh>
-        <mesh material={accent} position={[0, -0.18, 0.315]} scale={[0.48, 0.03, 0.04]}>
-          <boxGeometry args={[1, 1, 1]} />
-        </mesh>
-      </group>
-    );
-  }
-
-  if (modelKey === "coffeeTable") {
-    return (
-      <group {...commonProps} rotation={[0.02, -0.22, 0]} position={[0.8, -0.62, 0]}>
-        <mesh material={glassMaterial} position={[0, 0.18, 0]} scale={[1.55, 0.12, 0.76]}>
-          <boxGeometry args={[1, 1, 1]} />
-        </mesh>
-        {[-0.56, 0.56].map((x) => (
-          <mesh key={x} material={darkMaterial} position={[x, -0.26, -0.22]} scale={[0.075, 0.72, 0.075]}>
-            <boxGeometry args={[1, 1, 1]} />
-          </mesh>
-        ))}
-        <mesh material={accent} position={[0, 0.29, 0]} scale={[0.34, 0.035, 0.34]}>
-          <cylinderGeometry args={[1, 1, 1, 48]} />
-        </mesh>
-      </group>
-    );
-  }
-
-  if (modelKey === "sideTable") {
-    return (
-      <group {...commonProps} rotation={[0, 0.38, 0]} position={[0.95, -0.62, -0.08]}>
-        <mesh material={glassMaterial} position={[0, 0.28, 0]} scale={[0.58, 0.08, 0.58]}>
-          <cylinderGeometry args={[1, 1, 1, 64]} />
-        </mesh>
-        <mesh material={darkMaterial} position={[0, -0.12, 0]} scale={[0.1, 0.82, 0.1]}>
-          <cylinderGeometry args={[1, 1, 1, 24]} />
-        </mesh>
-        <mesh material={accent} position={[0, -0.54, 0]} scale={[0.46, 0.055, 0.46]}>
-          <cylinderGeometry args={[1, 1, 1, 48]} />
-        </mesh>
-      </group>
-    );
-  }
-
-  return <DucatoAccent visible={visible} />;
-}
-
-function DucatoAccent({ visible }: { visible: boolean }) {
-  const groupRef = useRef<Group>(null);
-  const gltf = useGLTF(MODEL_ASSETS.ducato ?? "");
+  const gltf = useGLTF(DUCATO_MODEL_PATH);
   const clonedScene = useMemo(() => gltf.scene.clone(), [gltf.scene]);
 
   useFrame((_, delta) => {
     if (!groupRef.current) return;
     groupRef.current.rotation.y += delta * 0.08;
-    const targetScale = visible ? 0.62 : 0.48;
-    groupRef.current.scale.lerp(new Vector3(targetScale, targetScale, targetScale), 0.045);
+    groupRef.current.scale.lerp(new Vector3(0.62, 0.62, 0.62), 0.045);
   });
 
   return (
     <group ref={groupRef} position={[0.8, -0.78, 0]} rotation={[0, -0.55, 0]} scale={0.55}>
       <primitive object={clonedScene} />
-    </group>
-  );
-}
-
-function ModelRig({ sceneState }: { sceneState: SceneState }) {
-  return (
-    <group>
-      {(["chair", "nightstand", "coffeeTable", "sideTable", "ducato"] satisfies ModelKey[]).map((modelKey) => (
-        <ProxyModel key={modelKey} modelKey={modelKey} visible={sceneState.activeModel === modelKey} />
-      ))}
     </group>
   );
 }
@@ -383,16 +235,39 @@ function CameraRig({ sceneState }: { sceneState: SceneState }) {
   return null;
 }
 
-function SceneContent({ sceneState }: { sceneState: SceneState }) {
+function WebGLContextGuard({ onFailure }: { onFailure: () => void }) {
+  const { gl } = useThree();
+
+  useEffect(() => {
+    const canvas = gl.domElement;
+    const handleContextLost = (event: Event) => {
+      event.preventDefault();
+      window.dispatchEvent(new CustomEvent("martis:webgl-error"));
+      onFailure();
+    };
+
+    canvas.addEventListener("webglcontextlost", handleContextLost, false);
+    return () => {
+      canvas.removeEventListener("webglcontextlost", handleContextLost, false);
+    };
+  }, [gl, onFailure]);
+
+  return null;
+}
+
+function SceneContent({ sceneState, onFailure }: { sceneState: SceneState; onFailure: () => void }) {
+  const showCar = sceneState.activeModel === "ducato";
+
   return (
     <>
+      <WebGLContextGuard onFailure={onFailure} />
       <CameraRig sceneState={sceneState} />
       <ambientLight intensity={1.1} />
-      <directionalLight position={[5, 4, 5]} intensity={2.6} color={THEME_STATES[sceneState.stage].accent} />
-      <pointLight position={[-3, 1.8, 3]} intensity={0.8} color="#fff7e8" />
+      <directionalLight position={[5, 4, 5]} intensity={2.4} color={THEME_STATES[sceneState.stage].accent} />
+      <pointLight position={[-3, 1.8, 3]} intensity={0.7} color="#fff7e8" />
       <Suspense fallback={null}>
         <ShaderGrid sceneState={sceneState} />
-        <ModelRig sceneState={sceneState} />
+        {showCar ? <DucatoModel /> : null}
         <Environment preset="city" />
       </Suspense>
     </>
@@ -402,38 +277,46 @@ function SceneContent({ sceneState }: { sceneState: SceneState }) {
 export function SceneCanvas() {
   const fallback = useSceneFallbackMode();
   const sceneState = useSceneTelemetry(!fallback);
+  const [sceneFailed, setSceneFailed] = useState(false);
 
-  if (fallback) return <SceneFallback />;
+  useEffect(() => {
+    if (fallback || sceneFailed) return;
+
+    try {
+      void Promise.resolve(useGLTF.preload(DUCATO_MODEL_PATH)).catch(() => {
+        setSceneFailed(true);
+      });
+    } catch {
+      setSceneFailed(true);
+    }
+  }, [fallback, sceneFailed]);
+
+  if (fallback || sceneFailed) return <SceneFallback />;
 
   return (
-    <div
-      className="scene-canvas fixed inset-0 z-0 pointer-events-none transition-opacity duration-500"
-      style={{ opacity: sceneState.layerOpacity }}
-      aria-hidden="true"
-    >
-      <Canvas
-        dpr={[1, 1.35]}
-        frameloop="always"
-        camera={{ position: CAMERA_STATES.hero.position, fov: CAMERA_STATES.hero.fov }}
-        gl={{
-          antialias: true,
-          alpha: false,
-          powerPreference: "high-performance",
-          failIfMajorPerformanceCaveat: true
-        }}
-        onCreated={({ gl }) => {
-          gl.setClearColor(THEME_STATES.hero.background, 1);
-        }}
-        onError={() => {
-          window.dispatchEvent(new CustomEvent("martis:webgl-error"));
-        }}
+    <SceneErrorBoundary onError={() => setSceneFailed(true)}>
+      <div
+        className="scene-canvas fixed inset-0 z-0 pointer-events-none transition-opacity duration-500"
+        style={{ opacity: sceneState.layerOpacity }}
+        aria-hidden="true"
       >
-        <SceneContent sceneState={sceneState} />
-      </Canvas>
-    </div>
+        <Canvas
+          dpr={[1, 1.25]}
+          frameloop={sceneState.activeModel === "ducato" ? "always" : "demand"}
+          camera={{ position: CAMERA_STATES.hero.position, fov: CAMERA_STATES.hero.fov }}
+          gl={{
+            antialias: true,
+            alpha: false,
+            powerPreference: "high-performance",
+            failIfMajorPerformanceCaveat: true
+          }}
+          onCreated={({ gl }) => {
+            gl.setClearColor(THEME_STATES.hero.background, 1);
+          }}
+        >
+          <SceneContent sceneState={sceneState} onFailure={() => setSceneFailed(true)} />
+        </Canvas>
+      </div>
+    </SceneErrorBoundary>
   );
-}
-
-if (MODEL_ASSETS.ducato) {
-  useGLTF.preload(MODEL_ASSETS.ducato);
 }

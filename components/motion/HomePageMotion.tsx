@@ -13,7 +13,8 @@ export function HomePageMotion({ children }: { children: ReactNode }) {
   const [showScene, setShowScene] = useState(false);
 
   useEffect(() => {
-    setShowScene(!prefersReducedMotion() && isDesktopMotion());
+    const hasIntentionalCarScene = Boolean(document.querySelector("main[data-story-root] [data-scene-model='ducato']"));
+    setShowScene(!prefersReducedMotion() && isDesktopMotion() && hasIntentionalCarScene);
   }, []);
 
   return (

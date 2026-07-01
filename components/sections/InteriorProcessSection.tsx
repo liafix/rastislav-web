@@ -8,7 +8,6 @@ export function InteriorProcessSection() {
     <section
       id="core-value"
       data-scene-stage="value"
-      data-scene-model="chair"
       data-scene-intensity="rest"
       className="relative z-10 overflow-hidden bg-[#fbf8f0]/95 py-20 backdrop-blur-xl md:py-28 lg:py-32"
     >

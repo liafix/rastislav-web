@@ -254,7 +254,7 @@ export function MotionOrchestrator({ children }: { children: ReactNode }) {
     return () => {
       window.removeEventListener("load", refresh);
       context.revert();
-      setSceneSnapshot({ stage: "hero", progress: 0, heroProgress: 0, sceneOpacity: 0, activeModel: "chair" });
+      setSceneSnapshot({ stage: "hero", progress: 0, heroProgress: 0, sceneOpacity: 0, activeModel: null });
     };
   }, []);
 

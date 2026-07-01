@@ -6,7 +6,7 @@ export type ScrollSceneSnapshot = {
   progress: number;
   heroProgress: number;
   sceneOpacity: number;
-  activeModel: ModelKey;
+  activeModel: ModelKey | null;
 };
 
 const defaultSnapshot: ScrollSceneSnapshot = {

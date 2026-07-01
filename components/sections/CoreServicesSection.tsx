@@ -9,7 +9,6 @@ export function CoreServicesSection() {
       id="sluzby"
       aria-labelledby="core-services-title"
       data-scene-stage="services"
-      data-scene-model="coffeeTable"
       data-scene-intensity="high"
       className="relative z-10 overflow-hidden bg-[#f4efe5] py-24 text-[#17130f] md:py-32"
     >
