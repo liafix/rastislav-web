@@ -5,12 +5,31 @@ export const company = {
   legalName: "Martiš MV",
   descriptor: "Interiérové rekonštrukcie",
   slogan: "Rekonštrukcie interiéru na kľúč",
-  phoneDisplay: "0948 443 899",
-  phoneHref: "tel:0948443899",
+
+  // Oficiálne firemné údaje
+  ico: "35359871",
+  email: "mv_dubnica@mail.t-com.sk",
+  emailHref: "mailto:mv_dubnica@mail.t-com.sk",
+
+  // Oficiálny telefón
+  phoneDisplay: "+421 42 442 02 84",
+  phoneHref: "tel:+421424420284",
+
+  // WhatsApp / rýchly kontakt ponechaný ako mobilné číslo používané v projekte
+  mobileDisplay: "0948 443 899",
+  mobileHref: "tel:0948443899",
+  whatsappDisplay: "0948 443 899",
   whatsappHref:
     "https://wa.me/421948443899?text=Dobr%C3%BD%20de%C5%88%2C%20m%C3%A1m%20z%C3%A1ujem%20o%20rekon%C5%A1trukciu.",
+
   baseLocation: "Dubnica nad Váhom",
-  address: "A. Kmeša 939/28, Dubnica nad Váhom",
+
+  // Oficiálna adresa sídla
+  address: "A. Kmeťa 365/8, 018 41 Dubnica nad Váhom",
+  legalAddress: "A. Kmeťa 365/8, 018 41 Dubnica nad Váhom",
+  mapAddressTitle: "A. Kmeťa 365/8",
+  city: "Dubnica nad Váhom",
+
   licensePlate: "IL 590DF",
   serviceArea: ["Dubnica nad Váhom", "Ilava", "Trenčín", "Nová Dubnica", "Nemšová", "okolie Považia"]
 } as const;
