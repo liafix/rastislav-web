@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node -e \"console.error('Local dev server is disabled for this project. Use the Vercel deployment/preview workflow; port 3000 is reserved for Weblore.ai.'); process.exit(1)\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",

@@ -7,7 +7,7 @@ import {
 import { BookingActions } from "@/components/marketing/BookingActions";
 import { HomePageMotion } from "@/components/motion/HomePageMotion";
 import { ProofCard } from "@/components/marketing/ProofCard";
-import { ServiceCard } from "@/components/marketing/ServiceCard";
+import { CoreServicesSection } from "@/components/sections/CoreServicesSection";
 import { HomeHero } from "@/components/sections/HomeHero";
 import { InteriorProcessSection } from "@/components/sections/InteriorProcessSection";
 import { processSteps, services } from "@/lib/content/services";
@@ -91,37 +91,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        data-scene-stage="services"
-        data-scene-model="coffeeTable"
-        data-scene-intensity="high"
-        className="relative z-10 bg-[#f7f4ed]/90 py-24 backdrop-blur-xl md:py-32"
-      >
-        <div className="container">
-          <div data-motion="reveal" className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-            <div className="max-w-3xl">
-              <p className="text-sm font-black uppercase text-[#e44f22]">Služby v jednom postupe</p>
-              <h2 className="mt-3 text-4xl font-black leading-tight sm:text-6xl">Kompletná práca v interiéri.</h2>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-black/64">
-                Obklady, dlažby, podlahy, sanita, dvere aj sadrokartón na seba musia nadväzovať. Preto riešime rozsah,
-                poradie prác a detail ako jeden zrozumiteľný celok.
-              </p>
-            </div>
-            <Link href="/sluzby" className="btn-secondary w-fit">
-              Pozrieť služby
-              <ArrowUpRight size={18} aria-hidden="true" />
-            </Link>
-          </div>
-
-          <div data-motion="assemble" className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service, index) => (
-              <div key={service.slug} data-motion-item>
-                <ServiceCard service={service} index={index} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <CoreServicesSection />
 
       <section
         data-scene-stage="index"

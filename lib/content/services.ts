@@ -35,6 +35,9 @@ export type Service = {
   slug: ServiceSlug;
   label: string;
   shortLabel: string;
+  cardImage: string;
+  cardPreview?: string;
+  cardImageAlt?: string;
   h1: string;
   intro: string;
   metaTitle: string;
@@ -97,6 +100,10 @@ function makeFaq(label: string, scope: string): ServiceFaq[] {
 export const services: Service[] = [
   {
     slug: "obklady",
+    cardImage: "/images/sluzby/obklady.webp",
+    cardPreview:
+      "Realizujeme obklady do kúpeľní, kuchýň, technických miestností aj menších interiérov. Pri práci sledujeme presné napojenia a čistý detail.",
+    cardImageAlt: "Svetlý kúpeľňový obklad s kamenným detailom",
     label: "Obklady",
     shortLabel: "Obklady",
     h1: "Obklady v Dubnici nad Váhom a okolí",
@@ -128,6 +135,10 @@ export const services: Service[] = [
   },
   {
     slug: "dlazby",
+    cardImage: "/images/sluzby/dlazby.webp",
+    cardPreview:
+      "Pokladáme dlažby v kúpeľniach, chodbách, vstupoch a interiérových priestoroch. Dôležitá je príprava podkladu a čisté rezy.",
+    cardImageAlt: "Teplá drevená a dlažbová podlaha v interiéri",
     label: "Dlažby",
     shortLabel: "Dlažby",
     h1: "Dlažby v Dubnici nad Váhom a okolí",
@@ -159,6 +170,10 @@ export const services: Service[] = [
   },
   {
     slug: "omietky",
+    cardImage: "/images/sluzby/omietky.webp",
+    cardPreview:
+      "Opravujeme a pripravujeme steny tak, aby interiér pôsobil čisto ešte pred finálnym zariadením. Riešime povrch aj detaily napojení.",
+    cardImageAlt: "Jemná svetlá omietka a stena v interiéri",
     label: "Omietky",
     shortLabel: "Omietky",
     h1: "Omietky a úpravy stien v Dubnici nad Váhom a okolí",
@@ -190,6 +205,10 @@ export const services: Service[] = [
   },
   {
     slug: "podlahy",
+    cardImage: "/images/sluzby/podlahy.webp",
+    cardPreview:
+      "Podlahy riešime od prípravy priestoru až po finálne uloženie a detail pri stenách, dverách a prechodoch.",
+    cardImageAlt: "Svetlá interiérová podlaha s jemnou štruktúrou",
     label: "Podlahy",
     shortLabel: "Podlahy",
     h1: "Podlahy v Dubnici nad Váhom a okolí",
@@ -221,6 +240,10 @@ export const services: Service[] = [
   },
   {
     slug: "sanita",
+    cardImage: "/images/sluzby/sanita.webp",
+    cardPreview:
+      "Montáž sanity berieme ako finálny detail kúpeľne alebo WC, ktorý musí dobre fungovať aj dobre vyzerať.",
+    cardImageAlt: "Moderná kúpeľňová sanita so svetlým obkladom",
     label: "Sanita",
     shortLabel: "Sanita",
     h1: "Montáž sanity v Dubnici nad Váhom a okolí",
@@ -252,6 +275,10 @@ export const services: Service[] = [
   },
   {
     slug: "dvere-zarubne-kovania",
+    cardImage: "/images/sluzby/dvere.webp",
+    cardPreview:
+      "Osádzame interiérové dvere, zárubne a kovania tak, aby sedeli s podlahou, stenami aj celkovým štýlom rekonštrukcie.",
+    cardImageAlt: "Interiérové dvere so zárubňou a kovaním",
     label: "Dvere, zárubne, kovania",
     shortLabel: "Dvere a zárubne",
     h1: "Dvere, zárubne a kovania v Dubnici nad Váhom a okolí",
@@ -283,6 +310,10 @@ export const services: Service[] = [
   },
   {
     slug: "sadrokarton",
+    cardImage: "/images/sluzby/sadrokarton.webp",
+    cardPreview:
+      "Sadrokartón používame pri priečkach, podhľadoch, zakrytí rozvodov aj úpravách dispozície.",
+    cardImageAlt: "Svetlý sadrokartónový detail v interiéri",
     label: "Sadrokartón",
     shortLabel: "Sadrokartón",
     h1: "Sadrokartón v Dubnici nad Váhom a okolí",
@@ -314,6 +345,10 @@ export const services: Service[] = [
   },
   {
     slug: "rekonstrukcie-interieru",
+    cardImage: "/images/sluzby/rekonstrukcie-na-kluc.webp",
+    cardPreview:
+      "Kompletné rekonštrukcie interiéru spájajú obklady, dlažby, podlahy, sanitu, sadrokartón, dvere a finálne detaily.",
+    cardImageAlt: "Dokončený svetlý interiér po rekonštrukcii",
     label: "Rekonštrukcie interiéru na kľúč",
     shortLabel: "Rekonštrukcie",
     h1: "Rekonštrukcie interiéru na kľúč v Dubnici nad Váhom a okolí",

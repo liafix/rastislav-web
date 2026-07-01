@@ -22,17 +22,11 @@ The project includes:
 npm install
 ```
 
-## Run Locally
+## Local Server Policy
 
-```bash
-npm run dev
-```
+Do not run this project on a local development server. This website is verified with production builds and deployed through Vercel.
 
-Open:
-
-```text
-http://localhost:3000
-```
+Port `3000` is reserved for Weblore.ai and must not be used by this project.
 
 ## Build
 
