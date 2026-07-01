@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Logo } from "@/components/Logo";
 import { MagneticButton } from "@/components/motion/effects/MagneticButton";
 import { company } from "@/lib/content/services";
 
@@ -25,11 +26,7 @@ export function Header() {
       }`}
     >
       <div className="container flex min-h-[inherit] items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-5" aria-label="Martiš MV domov">
-          <span className="font-serif text-3xl font-black leading-none text-[#11100e]">Martiš MV</span>
-          <span className="hidden h-5 w-px bg-black/18 sm:block" aria-hidden="true" />
-          <span className="hidden text-xs uppercase leading-none text-black/54 sm:inline">{company.descriptor}</span>
-        </Link>
+        <Logo variant="header" />
 
         <nav className="hidden items-center gap-14 text-base font-semibold text-black/74 md:flex">
           <Link href="/sluzby">Služby</Link>

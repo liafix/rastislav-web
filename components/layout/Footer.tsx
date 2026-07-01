@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/Logo";
 import { localPages } from "@/lib/content/local-pages";
 import { company } from "@/lib/content/services";
 
@@ -12,7 +13,7 @@ export function Footer() {
     >
       <div className="container grid gap-8 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
         <div>
-          <p className="text-2xl font-black">{company.name}</p>
+          <Logo variant="footer" />
           <p className="mt-2 max-w-sm text-sm leading-6 text-white/62">{company.slogan}</p>
         </div>
         <div className="text-sm leading-7 text-white/72">

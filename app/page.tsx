@@ -9,6 +9,7 @@ import { HomePageMotion } from "@/components/motion/HomePageMotion";
 import { ProofCard } from "@/components/marketing/ProofCard";
 import { ServiceCard } from "@/components/marketing/ServiceCard";
 import { HomeHero } from "@/components/sections/HomeHero";
+import { InteriorProcessSection } from "@/components/sections/InteriorProcessSection";
 import { processSteps, services } from "@/lib/content/services";
 import { buildPageMetadata, localBusinessJsonLd } from "@/lib/seo/metadata";
 
@@ -55,36 +56,7 @@ export default function Home() {
         />
         <HomeHero />
 
-      <section
-  id="core-value"
-  data-scene-stage="value"
-  data-scene-model="chair"
-  data-scene-intensity="rest"
-  className="relative z-10 bg-[#fbf8f0]/92 py-24 backdrop-blur-xl md:py-32"
->
-  <div className="container">
-    <div data-motion="reveal" className="max-w-3xl">
-      <p className="text-sm font-black uppercase text-[#e44f22]">
-        Kompletné interiérové práce
-      </p>
-
-      <h2 className="mt-5 text-4xl font-black leading-tight sm:text-6xl">
-        Od prípravy priestoru až po čisté odovzdanie.
-      </h2>
-
-      <p className="mt-6 text-lg leading-8 text-black/64">
-        Rekonštrukciu interiéru nevnímame ako zoznam samostatných úloh, ale ako jeden nadväzujúci postup.
-        Obklady, dlažby, omietky, podlahy, sanita, dvere, zárubne, kovania aj sadrokartón musia spolu fungovať
-        technicky, vizuálne aj prakticky.
-      </p>
-
-      <p className="mt-5 text-lg leading-8 text-black/64">
-        Každý detail riešime tak, aby výsledný interiér pôsobil čisto, presne a vydržal každodenné používanie.
-        Dôležitá je príprava podkladu, správna nadväznosť prác, rovina, napojenia, škáry, prechody aj finálne detaily.
-      </p>
-    </div>
-  </div>
-</section>
+        <InteriorProcessSection />
 
       <section
         data-scene-stage="craft"
