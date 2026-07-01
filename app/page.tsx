@@ -9,6 +9,7 @@ import { BookingActions } from "@/components/marketing/BookingActions";
 import { HomePageMotion } from "@/components/motion/HomePageMotion";
 import { ProofCard } from "@/components/marketing/ProofCard";
 import { CoreServicesSection } from "@/components/sections/CoreServicesSection";
+import { DetailCraftSection } from "@/components/sections/DetailCraftSection";
 import { HomeHero } from "@/components/sections/HomeHero";
 import { InteriorProcessSection } from "@/components/sections/InteriorProcessSection";
 import { processSteps, services } from "@/lib/content/services";
@@ -20,13 +21,6 @@ export const metadata: Metadata = buildPageMetadata({
     "Prémiové interiérové rekonštrukcie, obklady, dlažby, podlahy, sanita, dvere a sadrokartón pre Dubnicu nad Váhom, Ilavu, Trenčín a okolie.",
   path: "/"
 });
-
-const craftPoints = [
-  "zameranie priestoru",
-  "čistý detail pri hranách",
-  "nadväznosť profesií",
-  "odovzdanie bez chaosu"
-];
 
 const proofItems = [
   {
@@ -59,39 +53,8 @@ export default function Home() {
 
         <InteriorProcessSection />
 
-      <section
-        data-scene-stage="craft"
-        data-scene-intensity="medium"
-        className="relative z-10 py-24 md:py-36"
-      >
-        <div className="container grid gap-10 lg:grid-cols-[0.85fr_1fr] lg:items-center">
-          <div data-motion="reveal" className="max-w-xl rounded-md border border-black/10 bg-[#f7f4ed]/78 p-6 backdrop-blur-xl" data-parallax="14">
-            <p className="text-sm font-black uppercase text-[#e44f22]">Detail rozhoduje</p>
-            <h2 className="mt-4 text-4xl font-black leading-tight sm:text-5xl">
-              Kvalitný výsledok cítiť najmä v detailoch, ktoré nerušia.
-            </h2>
-            <p className="mt-5 text-base leading-8 text-black/66">
-              Hrany, napojenia, škáry, podklad a poradie prác rozhodujú o tom, či bude interiér pôsobiť pokojne a čisto.
-              Preto riešime prípravu aj dokončenie tak, aby výsledok fungoval technicky aj pri každodennom používaní.
-            </p>
-          </div>
-
-          <div data-motion="stagger" className="grid gap-3 sm:grid-cols-2">
-            {craftPoints.map((point, index) => (
-              <div
-                key={point}
-                data-motion-item
-                className="rounded-md border border-black/10 bg-white/62 p-5 shadow-[0_20px_54px_rgba(20,20,20,0.05)]"
-              >
-                <p className="text-xs font-black text-black/34">{String(index + 1).padStart(2, "0")}</p>
-                <p className="mt-8 text-xl font-black uppercase leading-tight">{point}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <CoreServicesSection />
+        <DetailCraftSection />
+        <CoreServicesSection />
 
       <section
         data-scene-stage="index"
