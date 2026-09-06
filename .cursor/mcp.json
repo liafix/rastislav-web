@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "blender": {
+      "command": "C:\\Users\\DC\\projects\\rastislav web\\.cursor\\blender-mcp-venv\\Scripts\\python.exe",
+      "args": [
+        "-m",
+        "blender_mcp.server"
+      ],
+      "env": {
+        "DISABLE_TELEMETRY": "true"
+      }
+    }
+  }
+}

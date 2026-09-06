@@ -1,0 +1,5 @@
+﻿home = C:\Program Files\Blender Foundation\Blender 5.1\5.1\python\bin
+include-system-site-packages = false
+version = 3.13.9
+executable = C:\Program Files\Blender Foundation\Blender 5.1\5.1\python\bin\python.exe
+command = C:\Program Files\Blender Foundation\Blender 5.1\5.1\python\bin\python.exe -m venv C:\Users\DC\projects\rastislav web\.cursor\blender-mcp-venv
