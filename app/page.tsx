@@ -1,131 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
-import { ArrowUpRight } from "lucide-react";
-import { HomePageMotion } from "@/components/motion/HomePageMotion";
-import { CoreServicesSection } from "@/components/sections/CoreServicesSection";
-import { DetailCraftSection } from "@/components/sections/DetailCraftSection";
-import { HomeHero } from "@/components/sections/HomeHero";
-import { InteriorProcessSection } from "@/components/sections/InteriorProcessSection";
-import { ProofBeforeContactSection } from "@/components/sections/ProofBeforeContactSection";
-import { services } from "@/lib/content/services";
-import { buildPageMetadata, localBusinessJsonLd } from "@/lib/seo/metadata";
-
-export const metadata: Metadata = buildPageMetadata({
-  title: "Rekonštrukcie interiéru Dubnica nad Váhom | Martiš MV",
-  description:
-    "Prémiové interiérové rekonštrukcie, obklady, dlažby, podlahy, sanita, dvere a sadrokartón pre Dubnicu nad Váhom, Ilavu, Trenčín a okolie.",
-  path: "/"
-});
-
-export default function Home() {
-  return (
-    <HomePageMotion>
-      <main data-story-root className="relative isolate overflow-hidden">
-        <script
-          type="application/ld+json"
-          suppressHydrationWarning
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd()) }}
-        />
-
-        <HomeHero />
-
-        <InteriorProcessSection />
-
-        <DetailCraftSection />
-
-        <CoreServicesSection />
-
-        <section
-          data-scene-stage="index"
-          data-scene-intensity="rest"
-          className="relative isolate z-10 overflow-hidden bg-[#f4ede2] py-20 text-[#17130f] md:py-28"
-        >
-          <div
-            className="absolute inset-0 -z-30 bg-cover bg-left opacity-95"
-            style={{ backgroundImage: "url('/images/prace/background.webp')" }}
-            aria-hidden="true"
-          />
-
-          <div
-            className="absolute inset-0 -z-20 bg-[linear-gradient(90deg,rgba(255,250,240,0.86),rgba(255,250,240,0.62)_48%,rgba(245,235,220,0.76))]"
-            aria-hidden="true"
-          />
-
-          <div
-            className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_22%_24%,rgba(228,79,34,0.10),transparent_30%),radial-gradient(circle_at_72%_52%,rgba(255,255,255,0.46),transparent_34%)]"
-            aria-hidden="true"
-          />
-
-          <div className="container relative grid gap-8 lg:grid-cols-[minmax(0,0.82fr)_minmax(280px,0.72fr)] lg:items-center xl:grid-cols-[minmax(250px,0.76fr)_minmax(260px,0.58fr)_minmax(420px,1fr)]">
-            <div data-motion="reveal" className="max-w-[28rem]">
-              <p className="text-xs font-black uppercase tracking-[0.22em] text-[#b85d3d]">
-                PREHĽAD PRÁC
-              </p>
-
-              <h2 className="mt-5 font-serif text-5xl font-semibold leading-[0.96] tracking-[-0.04em] text-[#14110d] sm:text-6xl lg:text-[4.85rem]">
-                Vyberte službu a pozrite si ďalší krok.
-              </h2>
-
-              <div className="mt-7 h-px w-16 bg-[#e44f22]" aria-hidden="true" />
-
-              <p className="mt-7 max-w-sm text-base leading-8 text-black/66 sm:text-lg">
-                Zvoľte oblasť, ktorá vás zaujíma, a zistite, čo nasleduje.
-              </p>
-            </div>
-
-            <figure
-              data-motion="reveal"
-              className="relative mx-auto w-full max-w-[23rem] overflow-hidden rounded-[1.45rem] border border-white/70 bg-white/62 p-2 shadow-[0_34px_90px_rgba(62,48,31,0.22)] backdrop-blur-sm"
-            >
-              <div
-                className="absolute inset-0 rounded-[1.45rem] shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]"
-                aria-hidden="true"
-              />
-
-              <Image
-                src="/images/prace/praca.webp"
-                alt="Prémiový interiér kúpeľne s obkladom, umývadlom a drevenou skrinkou"
-                width={1122}
-                height={1402}
-                sizes="(min-width: 1280px) 24vw, (min-width: 1024px) 38vw, 88vw"
-                className="aspect-[0.74] h-auto w-full rounded-[1.05rem] object-cover"
-              />
-            </figure>
-
-            <nav
-              data-motion="stagger"
-              aria-label="Prehľad služieb"
-              className="grid gap-3 sm:grid-cols-2 lg:col-span-2 xl:col-span-1"
-            >
-              {services.map((service, index) => (
-                <Link
-                  key={service.slug}
-                  data-motion-item
-                  href={`/sluzby/${service.slug}`}
-                  className="group flex min-h-[82px] items-center gap-4 rounded-[1.05rem] border border-white/72 bg-[#fffaf0]/84 px-4 py-4 text-left shadow-[0_18px_48px_rgba(62,48,31,0.1)] backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:bg-white/94 hover:shadow-[0_24px_58px_rgba(62,48,31,0.16)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#17130f]"
-                >
-                  <span className="grid size-10 shrink-0 place-items-center rounded-full border border-[#d8c6ad] bg-[#f7eadb] font-serif text-sm font-semibold text-[#9b5b38] shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
-                    {String(index + 1).padStart(2, "0")}
-                  </span>
-
-                  <span className="min-w-0 flex-1 text-base font-black leading-tight text-[#17130f]">
-                    {service.label}
-                  </span>
-
-                  <ArrowUpRight
-                    className="shrink-0 text-[#c65f35] transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[#17130f]"
-                    size={19}
-                    aria-hidden="true"
-                  />
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </section>
-
-        <ProofBeforeContactSection />
-      </main>
-    </HomePageMotion>
-  );
+import { siteUrl } from "@/lib/seo/metadata";
+const services = [
+  { name: "Nová strecha", image: "new-roof.webp", alt: "Pracovník pri montáži modernej plechovej strechy", text: "Od prvého návrhu po posledný detail. Strecha, ktorá ladí s vaším domovom." },
+  { name: "Rekonštrukcia", image: "roof-reconstruction.webp", alt: "Porovnanie starej strechy a novej červenej krytiny", text: "Nový začiatok pre existujúcu strechu. Rozsah obnovy prispôsobíme jej stavu." },
+  { name: "Oprava", image: "roof-repair.webp", alt: "Detail ruky pri oprave sivej strešnej krytiny", text: "Poškodená krytina alebo netesnosť? Začnime tým, čo vaša strecha potrebuje." }
+];
+export default function HomePage() {
+  const origin = siteUrl();
+  return <main>
+    {origin ? <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: "KROVEX", url: origin, description: "Ukážkový projekt fiktívnej strechárskej firmy." }).replace(/</g, "\\u003c") }} /> : null}
+    <section className="roof-hero">
+      <div className="container hero-grid">
+        <div className="hero-copy"><p className="eyebrow">KROVEX · strechy a strechárske práce</p><h1>Domov začína<br />dobrou <em>strechou.</em></h1><p className="hero-description">Nová strecha, rekonštrukcia alebo oprava. Povedzte nám, čo plánujete. Spoločne upresníme ďalší krok.</p><Link className="btn-accent" href="/dopyt">Začať nezáväzný dopyt <span aria-hidden="true">↗</span></Link><p className="hero-note">Tri jednoduché kroky. Všetko podstatné na jednom mieste.</p></div>
+        <div className="hero-photo"><Image src="/images/roofing/hero-roof.webp" alt="Strechár v oranžovom pracovnom oblečení pri práci na škridlovej streche" fill priority sizes="(min-width: 1024px) 55vw, 100vw" /><div className="photo-caption"><span>PRE VÁŠ DOMOV</span><span>Od krytiny po detail ↗</span></div></div>
+      </div>
+    </section>
+    <section id="sluzby" className="container section-space">
+      <div className="section-heading"><div><p className="eyebrow">01 / Čomu sa venujeme</p><h2 className="section-title">Každá strecha má<br />svoj príbeh.</h2></div><p>Staviate, obnovujete alebo riešite konkrétny problém? Vyberte si, s čím vám môžeme pomôcť.</p></div>
+      <div className="service-grid">{services.map((service, index) => <article key={service.name} className="service-card"><div className={"service-image" + (index === 1 ? " comparison" : "")}><Image src={`/images/roofing/${service.image}`} alt={service.alt} fill sizes="(min-width: 768px) 33vw, 100vw" /></div><div className="service-copy"><span className="eyebrow">0{index + 1}</span><h3>{service.name}</h3><p>{service.text}</p><Link href="/dopyt" aria-label={`Nezáväzný dopyt: ${service.name}`}>Mám záujem <span aria-hidden="true">↗</span></Link></div></article>)}</div>
+    </section>
+    <section id="postup" className="process-section"><div className="container process-grid">
+      <div className="process-photo"><Image src="/images/roofing/finished-roof.webp" alt="Rodinný dom s dokončenou tmavou sedlovou strechou za súmraku" fill sizes="(min-width: 1024px) 50vw, 100vw" /><p>Priestor pre pokojný domov.</p></div>
+      <div><p className="eyebrow">02 / Od dopytu k ďalšiemu kroku</p><h2 className="section-title">Jasný postup.<br />Od začiatku.</h2><ol className="process-list">
+        <li><span>01</span><div><h3>Opíšte svoju strechu</h3><p>Vyberte typ prác a doplňte približnú plochu, miesto, termín a kontakt.</p></div></li>
+        <li><span>02</span><div><h3>Dostanete potvrdenie</h3><p>Po odoslaní vám pošleme email so zhrnutím vášho dopytu.</p></div></li>
+        <li><span>03</span><div><h3>Upresníme ďalší postup</h3><p>Ozveme sa vám a prejdeme si rozsah prác a možnosti termínu.</p></div></li>
+      </ol><Link className="btn-primary" href="/dopyt">Povedzte nám o svojom projekte ↗</Link></div>
+    </div></section>
+    <section className="container closing-cta"><p className="eyebrow">Vaša strecha. Váš ďalší krok.</p><h2 className="section-title">Začnime jednoduchým dopytom.</h2><Link className="btn-accent" href="/dopyt">Vyplniť nezáväzný dopyt ↗</Link></section>
+  </main>;
 }

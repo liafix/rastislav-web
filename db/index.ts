@@ -1,13 +1,14 @@
+import "server-only";
+
 import { drizzle } from "drizzle-orm/mysql2";
 import mysql from "mysql2/promise";
-import * as schema from "@/db/schema";
 
 let cachedPool: mysql.Pool | null = null;
 let cachedDb: ReturnType<typeof createDatabase> | null = null;
 
 export function assertDatabaseUrl() {
   if (!process.env.DATABASE_URL) {
-    throw new Error("DATABASE_URL is required for database-backed commerce routes.");
+    throw new Error("DATABASE_URL is required for database-backed routes.");
   }
 }
 
@@ -16,10 +17,11 @@ function createDatabase() {
     uri: process.env.DATABASE_URL as string,
     connectionLimit: 5,
     decimalNumbers: false,
-    namedPlaceholders: true
+    namedPlaceholders: true,
+    timezone: "Z"
   });
 
-  return drizzle(cachedPool, { schema, mode: "default" });
+  return drizzle(cachedPool, { mode: "default" });
 }
 
 export function getDb() {

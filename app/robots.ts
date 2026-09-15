@@ -1,14 +1,6 @@
 import type { MetadataRoute } from "next";
-import { absoluteUrl, getSiteUrl } from "@/lib/seo/metadata";
-
+import { siteUrl } from "@/lib/seo/metadata";
 export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: {
-      userAgent: "*",
-      allow: "/",
-      disallow: ["/api/", "/booking/success", "/booking/cancel"]
-    },
-    sitemap: absoluteUrl("/sitemap.xml"),
-    host: getSiteUrl()
-  };
+  const origin = siteUrl();
+  return { rules: { userAgent: "*", allow: "/", disallow: ["/admin", "/api/"] }, ...(origin ? { sitemap: origin + "/sitemap.xml" } : {}) };
 }

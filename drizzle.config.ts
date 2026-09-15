@@ -1,12 +1,2 @@
-import { defineConfig } from "drizzle-kit";
-
-export default defineConfig({
-  schema: "./db/schema.ts",
-  out: "./db/migrations",
-  dialect: "mysql",
-  dbCredentials: {
-    url: process.env.DATABASE_URL ?? ""
-  },
-  strict: true,
-  verbose: true
-});
+// Generation/checking only. Applying SQL requires a separately verified target database.
+export { default } from "./drizzle.krovex.config";

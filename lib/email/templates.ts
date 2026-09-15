@@ -1,51 +1,19 @@
-import { PAYMENT_LABELS } from "@/lib/commerce/config";
-import { getService } from "@/lib/content/services";
+import { ROOF_LABELS, type InquiryRecord } from "@/lib/inquiries/contract";
 
-export type BookingEmailDetails = {
-  customerName: string;
-  customerPhone: string;
-  customerEmail?: string | null;
-  service: string;
-  location: string;
-  preferredDate?: string | null;
-  preferredTime?: string | null;
-  message?: string | null;
-  paymentType?: string | null;
-  amountCents?: number | null;
-  currency?: string | null;
-  stripeSessionId?: string | null;
-  stripePaymentIntentId?: string | null;
-};
-
-export type EmailContent = {
-  subject: string;
-  text: string;
-  html: string;
-};
-
+export type EmailContent = { subject: string; text: string; html: string };
 function value(input: string | number | null | undefined) {
-  if (input === null || input === undefined || input === "") return "-";
-  return String(input);
+  return input === null || input === undefined || input === "" ? "-" : String(input);
 }
-
-function escapeHtml(input: string | number | null | undefined) {
-  return value(input)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
+export function escapeHtml(input: string | number | null | undefined) {
+  return value(input).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }
-
-function field(label: string, input: string | number | null | undefined) {
+export function field(label: string, input: string | number | null | undefined) {
   return `${label}: ${value(input)}`;
 }
-
-function htmlField(label: string, input: string | number | null | undefined) {
-  return `<tr><th align="left" style="padding:6px 12px 6px 0;">${escapeHtml(label)}</th><td style="padding:6px 0;">${escapeHtml(input)}</td></tr>`;
+export function htmlField(label: string, input: string | number | null | undefined) {
+  return `<tr><th align="left" style="padding:6px 12px 6px 0;vertical-align:top;">${escapeHtml(label)}</th><td style="padding:6px 0;overflow-wrap:anywhere;">${escapeHtml(input)}</td></tr>`;
 }
-
-function htmlShell(title: string, intro: string, rows: string, footer?: string) {
+export function htmlShell(title: string, intro: string, rows: string, footer?: string) {
   return `<!doctype html>
 <html lang="sk">
   <body style="font-family:Arial,sans-serif;line-height:1.5;color:#171717;">
@@ -58,117 +26,30 @@ function htmlShell(title: string, intro: string, rows: string, footer?: string) 
   </body>
 </html>`;
 }
-
-function serviceLabel(service: string) {
-  return getService(service)?.label ?? service;
-}
-
-function paymentLabel(paymentType?: string | null) {
-  if (!paymentType) return undefined;
-  return PAYMENT_LABELS[paymentType as keyof typeof PAYMENT_LABELS] ?? paymentType;
-}
-
-function formatAmount(amountCents?: number | null, currency?: string | null) {
-  if (typeof amountCents !== "number") return undefined;
-  return new Intl.NumberFormat("sk-SK", {
-    style: "currency",
-    currency: (currency || "eur").toUpperCase()
-  }).format(amountCents / 100);
-}
-
-function operationalRows(details: BookingEmailDetails) {
+export const INQUIRY_NEXT_STEP = "Dopyt si prezrieme a následne vás kontaktujeme, aby sme upresnili rozsah prác a termín.";
+function inquiryRows(inquiry: InquiryRecord): Array<[string, string | number]> {
   return [
-    field("Meno", details.customerName),
-    field("Telefón", details.customerPhone),
-    field("E-mail", details.customerEmail),
-    field("Služba", serviceLabel(details.service)),
-    field("Lokalita", details.location),
-    field("Preferovaný dátum", details.preferredDate),
-    field("Preferovaný čas", details.preferredTime),
-    field("Typ platby", paymentLabel(details.paymentType)),
-    field("Suma", formatAmount(details.amountCents, details.currency)),
-    field("Stripe session ID", details.stripeSessionId),
-    field("Stripe payment intent ID", details.stripePaymentIntentId),
-    field("Správa", details.message)
-  ].join("\n");
+    ["Číslo dopytu", inquiry.id],
+    ["Typ strechy", ROOF_LABELS[inquiry.roofType]],
+    ["Približná plocha", `${inquiry.areaM2} m²`],
+    ["Lokalita", inquiry.location],
+    ["Preferovaný termín", inquiry.preferredTerm],
+    ["Meno", inquiry.name],
+    ["Email", inquiry.email],
+    ["Telefón", inquiry.phone],
+    ["Odoslané (UTC)", inquiry.createdAt.toISOString()]
+  ];
 }
-
-function operationalHtmlRows(details: BookingEmailDetails) {
-  return [
-    htmlField("Meno", details.customerName),
-    htmlField("Telefón", details.customerPhone),
-    htmlField("E-mail", details.customerEmail),
-    htmlField("Služba", serviceLabel(details.service)),
-    htmlField("Lokalita", details.location),
-    htmlField("Preferovaný dátum", details.preferredDate),
-    htmlField("Preferovaný čas", details.preferredTime),
-    htmlField("Typ platby", paymentLabel(details.paymentType)),
-    htmlField("Suma", formatAmount(details.amountCents, details.currency)),
-    htmlField("Stripe session ID", details.stripeSessionId),
-    htmlField("Stripe payment intent ID", details.stripePaymentIntentId),
-    htmlField("Správa", details.message)
-  ].join("");
-}
-
-export function ownerPaidBookingTemplate(details: BookingEmailDetails): EmailContent {
-  const intro = "Stripe webhook potvrdil platbu za rezerváciu alebo konzultáciu.";
-  const nextAction = "Ďalší krok: kontaktujte zákazníka a potvrďte detaily termínu.";
-
+function inquiryTemplate(inquiry: InquiryRecord, customer: boolean): EmailContent {
+  const rows = inquiryRows(inquiry);
+  const title = customer ? "KROVEX — prijali sme váš dopyt" : `KROVEX — nový dopyt #${inquiry.id}`;
+  const intro = customer ? "Ďakujeme za váš dopyt. Nasledujúce údaje sme prijali a uložili." : "Bol prijatý nový dopyt na strechárske práce.";
+  const next = customer ? INQUIRY_NEXT_STEP : "Prezrite si dopyt a kontaktujte zákazníka na upresnenie rozsahu prác a termínu.";
   return {
-    subject: "Nová zaplatená rezervácia - Martiš MV",
-    text: `${intro}\n\n${operationalRows(details)}\n\n${nextAction}`,
-    html: htmlShell("Nová zaplatená rezervácia", intro, operationalHtmlRows(details), nextAction)
+    subject: title,
+    text: `${intro}\n\n${rows.map(([label, input]) => field(label, input)).join("\n")}\n\n${next}`,
+    html: htmlShell(title, intro, rows.map(([label, input]) => htmlField(label, input)).join(""), next)
   };
 }
-
-export function customerPaidBookingTemplate(details: BookingEmailDetails): EmailContent {
-  const amount = formatAmount(details.amountCents, details.currency);
-  const intro = "Ďakujeme, prijali sme vašu platbu a požiadavku.";
-  const footer = "Tím Martiš MV vás bude kontaktovať a potvrdí detaily, ak bude potrebné niečo doplniť.";
-
-  const rows = [
-    field("Služba", serviceLabel(details.service)),
-    field("Lokalita", details.location),
-    field("Preferovaný dátum", details.preferredDate),
-    field("Preferovaný čas", details.preferredTime),
-    field("Suma", amount),
-    field("Čo bude nasledovať", "Ozveme sa vám a doladíme termín alebo technické detaily.")
-  ].join("\n");
-
-  const htmlRows = [
-    htmlField("Služba", serviceLabel(details.service)),
-    htmlField("Lokalita", details.location),
-    htmlField("Preferovaný dátum", details.preferredDate),
-    htmlField("Preferovaný čas", details.preferredTime),
-    htmlField("Suma", amount),
-    htmlField("Čo bude nasledovať", "Ozveme sa vám a doladíme termín alebo technické detaily.")
-  ].join("");
-
-  return {
-    subject: "Potvrdenie platby a požiadavky - Martiš MV",
-    text: `${intro}\n\n${rows}\n\n${footer}`,
-    html: htmlShell("Potvrdenie platby a požiadavky", intro, htmlRows, footer)
-  };
-}
-
-export function ownerLeadTemplate(details: BookingEmailDetails): EmailContent {
-  const intro = "Web vytvoril nový neplatený lead.";
-  const nextAction = "Ďalší krok: overte požiadavku a kontaktujte zákazníka.";
-
-  return {
-    subject: "Nový lead z webu - Martiš MV",
-    text: `${intro}\n\n${operationalRows(details)}\n\n${nextAction}`,
-    html: htmlShell("Nový lead z webu", intro, operationalHtmlRows(details), nextAction)
-  };
-}
-
-export function ownerExpiredCheckoutTemplate(details: BookingEmailDetails): EmailContent {
-  const intro = "Stripe Checkout relácia expirovala alebo nebola dokončená.";
-  const nextAction = "Ďalší krok: ak lead vyzerá hodnotne, kontaktujte zákazníka a ponúknite pomoc s dokončením.";
-
-  return {
-    subject: "Nedokončená platba - Martiš MV",
-    text: `${intro}\n\n${operationalRows(details)}\n\n${nextAction}`,
-    html: htmlShell("Nedokončená platba", intro, operationalHtmlRows(details), nextAction)
-  };
-}
+export function companyInquiryTemplate(inquiry: InquiryRecord) { return inquiryTemplate(inquiry, false); }
+export function customerInquiryTemplate(inquiry: InquiryRecord) { return inquiryTemplate(inquiry, true); }
