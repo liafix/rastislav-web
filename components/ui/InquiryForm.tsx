@@ -122,48 +122,49 @@ export function InquiryForm() {
   if (receipt) {
     const delivered = receipt.delivery.company === "sent" && receipt.delivery.customer === "sent";
     return (
-      <section className="min-w-0 rounded-md border border-black/10 bg-white/70 p-5 shadow-[0_24px_70px_rgba(20,20,20,0.06)] sm:p-8">
-        <h2 ref={successRef} tabIndex={-1} className="text-2xl font-black">Ďakujeme. Váš dopyt bol uložený.</h2>
-        <p className="mt-4 break-words">Číslo dopytu: <strong>#{receipt.inquiryId}</strong></p>
-        <p className="mt-4 leading-7">
+      <section className="krovex-inquiry-success">
+        <h2 ref={successRef} tabIndex={-1} className="krovex-inquiry-success__title">Ďakujeme. Váš dopyt bol uložený.</h2>
+        <p className="krovex-inquiry-success__id">Číslo dopytu: <strong>#{receipt.inquiryId}</strong></p>
+        <p className="krovex-inquiry-success__copy">
           {delivered ? "Potvrdenie sme odovzdali emailovému serveru. Skontrolujte aj priečinok nevyžiadanej pošty." :
             "Odoslanie emailových potvrdení zatiaľ nie je potvrdené. Dopyt je uložený; nemusíte ho posielať znova."}
         </p>
-        {!receipt.deliveryRecorded ? <p className="mt-3 leading-7">Stav emailov sa nepodarilo úplne zaznamenať. Uloženého dopytu sa to netýka.</p> : null}
-        <p className="mt-4 leading-7">Dopyt si prezrieme a následne vás kontaktujeme, aby sme upresnili rozsah prác a termín.</p>
+        {!receipt.deliveryRecorded ? <p className="krovex-inquiry-success__copy">Stav emailov sa nepodarilo úplne zaznamenať. Uloženého dopytu sa to netýka.</p> : null}
+        <p className="krovex-inquiry-success__next">Dopyt si prezrieme a následne vás kontaktujeme, aby sme upresnili rozsah prác a termín.</p>
       </section>
     );
   }
 
   return (
     <form ref={formRef} onSubmit={submit} noValidate aria-busy={isSubmitting}
-      className="grid min-w-0 gap-5 rounded-md border border-black/10 bg-white/70 p-5 shadow-[0_24px_70px_rgba(20,20,20,0.06)] sm:p-8">
-      <div>
-        <p className="text-sm font-bold text-[#a13c1a]" aria-live="polite">Krok {step + 1} z 3</p>
-        <h2 ref={headingRef} tabIndex={-1} className="mt-2 text-2xl font-black">{stepNames[step]}</h2>
-        <ol className="mt-4 grid grid-cols-3 gap-2" aria-label="Priebeh dopytu">
+      className="krovex-inquiry-form">
+      <div className="krovex-inquiry-form__head">
+        <p className="krovex-inquiry-form__step-count" aria-live="polite">Krok {step + 1} z 3</p>
+        <h2 ref={headingRef} tabIndex={-1} className="krovex-inquiry-form__title">{stepNames[step]}</h2>
+        <ol className="krovex-inquiry-form__progress" aria-label="Priebeh dopytu">
           {stepNames.map((name, index) => (
             <li key={name} aria-current={index === step ? "step" : undefined}
-              className={`border-t-4 pt-2 text-xs font-bold ${index <= step ? "border-[#e44f22] text-black/80" : "border-black/10 text-black/55"}`}>{name}</li>
+              className={index <= step ? "is-complete" : ""}>{<><span>{String(index + 1).padStart(2, "0")}</span>{name}</>}</li>
           ))}
         </ol>
       </div>
 
-      <fieldset disabled={isSubmitting} className="grid min-w-0 gap-5">
+      <fieldset disabled={isSubmitting} className="krovex-inquiry-form__fields">
         <legend className="sr-only">{stepNames[step]}</legend>
         {step === 0 ? (
           <>
-            <fieldset className="grid min-w-0 gap-3" aria-describedby={describedBy("roofType")}>
-              <legend className="mb-2 text-sm font-black">Typ strechy</legend>
+            <fieldset className="krovex-roof-types" aria-describedby={describedBy("roofType")}>
+              <legend>Typ strechy</legend>
               {ROOF_TYPES.map((type, index) => (
-                <label key={type} className={`flex min-h-14 cursor-pointer items-center gap-3 rounded-md border p-4 ${values.roofType === type ? "border-[#e44f22] bg-white" : "border-black/15 bg-white/60"}`}>
+                <label key={type} className={`krovex-roof-choice ${values.roofType === type ? "is-selected" : ""}`}>
                   <input id={index === 0 ? "roofType" : `roofType-${type}`} type="radio" name="roofType" value={type}
                     required checked={values.roofType === type} onChange={(event) => change("roofType", event.target.value)}
-                    aria-describedby={describedBy("roofType")} className="size-5 shrink-0 accent-[#e44f22]" />
-                  <span className="font-bold">{ROOF_LABELS[type]}</span>
+                    aria-describedby={describedBy("roofType")} className="krovex-roof-choice__input" />
+                  <span className="krovex-roof-choice__mark" aria-hidden="true" />
+                  <span className="krovex-roof-choice__label">{ROOF_LABELS[type]}</span>
                 </label>
               ))}
-              {errors.roofType ? <p id="roofType-error" className="text-sm font-bold text-[#b42318]">{errors.roofType}</p> : null}
+              {errors.roofType ? <p id="roofType-error" className="krovex-field-error">{errors.roofType}</p> : null}
             </fieldset>
             <Field name="areaM2" label="Približná plocha v m²" error={errors.areaM2}>
               <input id="areaM2" name="areaM2" className="field-input" inputMode="decimal" required maxLength={12}
@@ -203,23 +204,23 @@ export function InquiryForm() {
                 value={values.phone} onChange={(event) => change("phone", event.target.value)}
                 aria-invalid={Boolean(errors.phone)} aria-describedby={describedBy("phone")} placeholder="+421 ..." />
             </Field>
-            <p className="text-sm leading-6 text-black/65">Údaje použijeme na spracovanie dopytu a následné kontaktovanie.</p>
+            <p className="krovex-inquiry-form__privacy">Údaje použijeme na spracovanie dopytu a následné kontaktovanie.</p>
           </>
         ) : null}
       </fieldset>
 
       {submitError ? (
-        <div ref={errorRef} tabIndex={-1} role="alert" className="flex min-w-0 items-start gap-2 rounded-md border border-[#b42318]/20 bg-[#fff4f2] p-4 text-sm font-bold leading-6 text-[#b42318]">
-          <AlertCircle className="mt-1 shrink-0" size={18} aria-hidden="true" /><p className="min-w-0 break-words">{submitError}</p>
+        <div ref={errorRef} tabIndex={-1} role="alert" className="krovex-submit-error">
+          <AlertCircle size={18} aria-hidden="true" /><p>{submitError}</p>
         </div>
       ) : null}
-      {conflict ? <button type="button" className="btn-secondary" onClick={startAnother}>Začať nový dopyt s týmito údajmi</button> : null}
-      <div className="flex flex-col-reverse gap-3 sm:flex-row sm:justify-between">
-        {step > 0 ? <button className="btn-secondary" type="button" disabled={isSubmitting} onClick={() => {
+      {conflict ? <button type="button" className="krovex-inquiry-form__secondary" onClick={startAnother}>Začať nový dopyt s týmito údajmi</button> : null}
+      <div className="krovex-inquiry-form__actions">
+        {step > 0 ? <button className="krovex-inquiry-form__secondary" type="button" disabled={isSubmitting} onClick={() => {
           pendingFocus.current = "heading"; setErrors({}); setStep(step - 1);
         }}>Späť</button> : null}
-        <button className="btn-primary min-w-0 disabled:cursor-not-allowed disabled:opacity-70" type="submit" disabled={isSubmitting || conflict}>
-          {isSubmitting ? <><Loader2 className="animate-spin shrink-0" size={18} aria-hidden="true" />Odosielame dopyt</> :
+        <button className="krovex-inquiry-form__submit" type="submit" disabled={isSubmitting || conflict}>
+          {isSubmitting ? <><Loader2 className="krovex-spin" size={18} aria-hidden="true" />Odosielame dopyt</> :
             step < 2 ? "Pokračovať" : "Odoslať nezáväzný dopyt"}
         </button>
       </div>
@@ -228,9 +229,9 @@ export function InquiryForm() {
   );
 }
 function Field({ name, label, error, children }: { name: InquiryField; label: string; error?: string; children: ReactNode }) {
-  return <div className="min-w-0">
-    <label htmlFor={name} className="mb-2 block text-sm font-black">{label}</label>
+  return <div className="krovex-field">
+    <label htmlFor={name}>{label}</label>
     {children}
-    {error ? <p id={`${name}-error`} className="mt-2 text-sm font-bold text-[#b42318]">{error}</p> : null}
+    {error ? <p id={`${name}-error`} className="krovex-field-error">{error}</p> : null}
   </div>;
 }
