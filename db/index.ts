@@ -14,12 +14,17 @@ export function assertDatabaseUrl() {
 
 function createDatabase() {
   cachedPool = mysql.createPool({
-    uri: process.env.DATABASE_URL as string,
-    connectionLimit: 5,
-    decimalNumbers: false,
-    namedPlaceholders: true,
-    timezone: "Z"
-  });
+  uri: process.env.DATABASE_URL as string,
+  connectionLimit: 5,
+  decimalNumbers: false,
+  namedPlaceholders: true,
+  timezone: "Z",
+  ssl: process.env.DATABASE_SSL === "true"
+    ? {
+        minVersion: "TLSv1.2"
+      }
+    : undefined
+});
 
   return drizzle(cachedPool, { mode: "default" });
 }
